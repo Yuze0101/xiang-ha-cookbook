@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/index/search",
+            "style": {
+                "navigationBarTitleText": "菜谱搜索"
+            }
+        },
+        {
             "path": "pages/UserCenter/index",
             "style": {
                 "navigationBarTitleText": "xx"
