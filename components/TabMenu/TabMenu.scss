@@ -1,0 +1,35 @@
+@import '../../scss/global.scss';
+.scroll-box {
+    white-space: nowrap;
+    overflow-x: hidden;
+    .scroll-item {
+        padding: 16rpx 18rpx;
+        display: inline-block;
+        @include font-sub;
+        &.active {
+            @include font-active;
+        }
+    }
+}
+.item-box {
+    .item {
+        @include flex-center-row;
+        justify-content: space-between;
+        border-bottom: 1px solid #f4f4f4;
+        padding: 16rpx 18rpx;
+        font-size: 28rpx;
+        text {
+            display: inline-block;
+        }
+    }
+}
+.box-foot {
+    @include flex-center-row;
+    justify-content: center;
+    padding: 24rpx 0;
+    image {
+        padding: 20rpx;
+        width: 24rpx;
+        height: 24rpx;
+    }
+}
