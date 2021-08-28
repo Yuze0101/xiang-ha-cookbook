@@ -13,6 +13,12 @@
             }
         },
         {
+            "path": "pages/index/categories",
+            "style": {
+                "navigationBarTitleText": "食材分类"
+            }
+        },
+        {
             "path": "pages/UserCenter/index",
             "style": {
                 "navigationBarTitleText": "我的"

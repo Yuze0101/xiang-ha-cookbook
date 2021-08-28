@@ -1,0 +1,22 @@
+.searchBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 750rpx;
+	height: 112rpx;
+	background-color: rgb(238, 123, 45);
+	padding: 0rpx 26rpx;
+	box-sizing: border-box;
+	.inputItem {
+		width: 100%;
+		height: 60rpx;
+		background-color: white;
+		background-image: url("../../static/images/@2/caipusousuo_slices/mengbanzu\ 2@2x.png");
+		background-repeat: no-repeat;
+		background-size: 40rpx;
+		background-position: 200rpx center;
+		padding-left: 250rpx;
+		border-radius: 10rpx;
+        font-size: 22rpx;
+	}
+}
