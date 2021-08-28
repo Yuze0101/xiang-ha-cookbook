@@ -282,14 +282,10 @@ var promiseInterceptor = {
     if (!isPromise(res)) {
       return res;
     }
-    return new Promise(function (resolve, reject) {
-      res.then(function (res) {
-        if (res[0]) {
-          reject(res[0]);
-        } else {
-          resolve(res[1]);
-        }
-      });
+    return res.then(function (res) {
+      return res[1];
+    }).catch(function (res) {
+      return res[0];
     });
   } };
 
@@ -6553,7 +6549,7 @@ function initProps (vm, propsOptions) {
       defineReactive$$1(props, key, value, function () {
         if (!isRoot && !isUpdatingChildComponent) {
           {
-            if(vm.mpHost === 'mp-baidu' || vm.mpHost === 'mp-kuaishou'){//百度、快手 observer 在 setData callback 之后触发，直接忽略该 warn
+            if(vm.mpHost === 'mp-baidu'){//百度 observer 在 setData callback 之后触发，直接忽略该 warn
                 return
             }
             //fixed by xxxxxx __next_tick_pending,uni://form-field 时不告警
@@ -8012,9 +8008,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!***************************************************!*\
-  !*** D:/MyCode/香哈菜谱/xiang-ha-cookbook/pages.json ***!
-  \***************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/Herbert/Desktop/reactProject/01-cookBook/xiang-ha-cookbook/pages.json ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8026,7 +8022,9 @@ module.exports = g;
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */,
+/* 12 */
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
