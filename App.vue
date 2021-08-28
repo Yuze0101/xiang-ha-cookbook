@@ -1,8 +1,3 @@
-<template>
-	<view>
-		<text>123</text>
-	</view>
-</template>
 <script>
 	export default {
 		onLaunch: function() {
