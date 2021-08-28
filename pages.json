@@ -1,44 +1,42 @@
 {
-    "pages": [
-        {
-            "path": "pages/index/index",
-            "style": {
-                "navigationBarTitleText": "uni-app"
-            }
-        },
-        {
-            "path": "pages/UserCenter/index",
-            "style": {
-                "navigationBarTitleText": "xx"
-            }
-        },
-        {
-            "path": "pages/VIP/index",
-            "style": {
-                "navigationBarTitleText": "uni-app"
-            }
-        }
-    ],
-    "tabBar": {
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/VIP/index",
-                "text": "VIP会员"
-            },
-            {
-                "pagePath": "pages/UserCenter/index",
-                "text": "我的"
-            }
-        ]
-    },
-    "globalStyle": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "backgroundColor": "#F8F8F8"
-    }
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/UserCenter/index",
+			"style": {
+				"navigationBarTitleText": "xx"
+			}
+		},
+		{
+			"path": "pages/VIP/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		}
+	],
+	"tabBar": {
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/VIP/index",
+				"text": "VIP会员"
+			},
+			{
+				"pagePath": "pages/UserCenter/index",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
 }
