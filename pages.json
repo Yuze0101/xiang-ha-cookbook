@@ -15,7 +15,7 @@
         {
             "path": "pages/UserCenter/index",
             "style": {
-                "navigationBarTitleText": "xx"
+                "navigationBarTitleText": "我的"
             }
         },
         {
