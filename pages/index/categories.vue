@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<view class="Header">食材分类</view>
 		<view class="selectBox">
 			<view class="buttonBox">
 				<view class="Active">分类</view>

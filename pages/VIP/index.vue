@@ -1,5 +1,6 @@
 <template>
     <view class="container">
+        <view class="Header">VIP会员</view>
         <scroll-view scroll-x="true" class="menu">
             <view class="menu-item active">推荐</view>
             <view class="menu-item">免费体验</view>

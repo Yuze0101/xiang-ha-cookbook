@@ -1,8 +1,11 @@
 <template>
 	<view class="container">
-		<view class="Header">
-			<image src="../../static/images/@2/midouyichu _slices/xuhuan@2x.png" mode="" />
-			<image src="../../static/images/@2/midouyichu _slices/zhuanfa@2x.png" mode="" />
+		<view class="HeadContainer">
+			<view class="Title">菜名渲染</view>
+			<view class="Header">
+				<image src="../../static/images/@2/midouyichu _slices/xuhuan@2x.png" mode="" />
+				<image src="../../static/images/@2/midouyichu _slices/zhuanfa@2x.png" mode="" />
+			</view>
 		</view>
 		<view class="player">
 			<image src="../../static/images/@2/midouyichu _slices/tupian1@2x.png" mode="" />
@@ -63,7 +66,7 @@
 					</view>
 				</view>
 			</view>
-            <view>！！！富文本渲染</view>
+			<view>！！！富文本渲染</view>
 		</view>
 	</view>
 </template>

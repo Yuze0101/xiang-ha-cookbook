@@ -1,10 +1,22 @@
+.container {
+	background-image: url("https://z3.ax1x.com/2021/08/30/htZrN9.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.Header {
+	padding-top: 100rpx;
+	line-height: 50rpx;
+	font-size: 36rpx;
+	text-align: center;
+	color: white;
+}
 .searchBox {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 750rpx;
 	height: 112rpx;
-	background-color: rgb(238, 123, 45);
+	padding-top: 30rpx;
 	padding-left: 98rpx;
 	padding-right: 34rpx;
 	box-sizing: border-box;
@@ -31,6 +43,7 @@
 	width: 750rpx;
 	height: 430rpx;
 	padding: 0rpx 28rpx;
+	padding-top: 30rpx;
 }
 .scrollTitle {
 	width: 750rpx;
