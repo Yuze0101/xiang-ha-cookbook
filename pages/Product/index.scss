@@ -17,9 +17,31 @@
 }
 .player {
 	height: 386rpx;
+	position: relative;
 	image {
 		width: 100%;
 		height: 100%;
+	}
+	.alertVIP {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 386rpx;
+		width: 750rpx;
+		background-color: rgba(0, 0, 0, 0.7);
+		@include flex-center-column;
+		justify-content: center;
+		color: #EDD7B2;
+		.playerBTN {
+			width: 300rpx;
+			text-align: center;
+			line-height: 60rpx;
+			background-color: #EDD7B2;
+			border-radius: 50rpx;
+			color: #8A5635;
+			font-weight: bold;
+			margin: 40rpx 0rpx;
+}
 	}
 }
 .playerInfo {
