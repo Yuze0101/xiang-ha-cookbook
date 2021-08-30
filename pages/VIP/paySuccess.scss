@@ -1,0 +1,61 @@
+@import "../../scss/global.scss";
+.container {
+	@include flex-center-column;
+	width: 750rpx;
+	height: 100vh;
+	background-image: url("https://z3.ax1x.com/2021/08/30/hY9nvd.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	padding-top: 100rpx;
+	.Header {
+		line-height: 60rpx;
+		color: white;
+		font-size: 36rpx;
+	}
+	.wanchengPNG {
+		padding: 40rpx 0rpx;
+		height: 96rpx;
+		width: 96rpx;
+	}
+	.title {
+		color: white;
+		font-size: 36rpx;
+	}
+	.Money {
+		color: rgb(255, 195, 126);
+		font-size: 32rpx;
+		padding-bottom: 20rpx;
+	}
+	.logo {
+		width: 320rpx;
+		height: 320rpx;
+		background-image: url("https://z3.ax1x.com/2021/08/30/hYk5CV.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		image {
+			width: 85%;
+			height: 85%;
+		}
+	}
+	.adver {
+		font-size: 40rpx;
+		line-height: 120rpx;
+        font-weight: bold;
+	}
+	.button {
+		width: 540rpx;
+		height: 90rpx;
+		text-align: center;
+		line-height: 90rpx;
+		margin-bottom: 40rpx;
+		border: 1px solid rgb(255, 174, 37);
+		border-radius: 45rpx;
+	}
+    .active {
+        background-color: rgb(255, 174, 37);
+        color: white;
+    }
+}

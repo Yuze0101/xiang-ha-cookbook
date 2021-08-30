@@ -31,6 +31,12 @@
             }
         },
         {
+            "path": "pages/VIP/paySuccess",
+            "style": {
+                "navigationStyle": "custom"
+            }
+        },
+        {
             "path": "pages/Product/index",
             "style": {
                 "navigationBarTitleText": "商品名称"
