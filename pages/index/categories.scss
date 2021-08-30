@@ -1,0 +1,112 @@
+.selectBox {
+	width: 750rpx;
+	height: 72rpx;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: rgb(238, 123, 45);
+	.buttonBox {
+		border: 1rpx solid white;
+		border-radius: 20rpx;
+		width: 380rpx;
+		height: 48rpx;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		color: white;
+		font-size: 28rpx;
+		view {
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			line-height: 48rpx;
+		}
+		.Active {
+			background-color: white;
+			border-radius: 20rpx;
+			color: rgb(238, 123, 45);
+		}
+	}
+}
+.searchBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 750rpx;
+	height: 112rpx;
+	background-color: rgb(238, 123, 45);
+	padding: 0rpx 26rpx;
+	box-sizing: border-box;
+	.inputItem {
+		width: 100%;
+		height: 60rpx;
+		background-color: white;
+		background-image: url("../../static/images/@2/caipusousuo_slices/mengbanzu\ 2@2x.png");
+		background-repeat: no-repeat;
+		background-size: 40rpx;
+		background-position: 200rpx center;
+		padding-left: 250rpx;
+		border-radius: 10rpx;
+		font-size: 22rpx;
+	}
+}
+.page-section-spacing {
+	display: flex;
+	scroll-view {
+		height: calc(100vh - 184rpx);
+	}
+	.list-left {
+		width: 25%;
+		.scroll-view-item {
+			box-sizing: border-box;
+			height: 100rpx;
+			text-align: center;
+			line-height: 100rpx;
+			border-left: 10rpx solid transparent;
+			color: rgb(118,118,118);
+		}
+	}
+	.list-left .active {
+		background-color: #dddd;
+		border-left: 10rpx solid rgb(238, 123, 45);
+		color: rgb(238, 123, 45);
+	}
+
+	.list-right {
+		width: 75%;
+		border-left: 1rpx solid #dddd;
+		background-color: #ebebeb;
+		.scroll-view-item-right {
+			height: 100rpx;
+			text-align: center;
+			line-height: 100rpx;
+		}
+		.goods_box {
+			box-sizing: border-box;
+			padding: 10rpx;
+			padding-bottom: 50rpx;
+			padding-left: 15rpx;
+			display: flex;
+			flex-wrap: wrap;
+			.goods_item {
+				width: 150rpx;
+				padding: 15rpx;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+
+			.goods_img {
+				width: 150rpx;
+				height: 150rpx;
+			}
+
+			.goods_text {
+				width: 150rpx;
+				text-align: center;
+				font-size: 16rpx;
+				color: rgb(118,118,118);
+			}
+		}
+	}
+}

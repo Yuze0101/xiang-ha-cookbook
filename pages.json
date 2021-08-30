@@ -1,48 +1,74 @@
 {
-	"pages": [{
-			"path": "pages/index/index",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/UserCenter/index",
-			"style": {
-				"navigationBarTitleText": "xx"
-			}
-		},
-		{
-			"path": "pages/VIP/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		},
-		{
+    "pages": [
+        {
+            "path": "pages/index/index",
+            "style": {
+                "navigationBarTitleText": "uni-app"
+            }
+        },
+        {
+            "path": "pages/index/search",
+            "style": {
+                "navigationBarTitleText": "菜谱搜索"
+            }
+        },
+        {
+            "path": "pages/index/categories",
+            "style": {
+                "navigationBarTitleText": "食材分类"
+            }
+        },
+        {
+            "path": "pages/UserCenter/index",
+            "style": {
+                "navigationBarTitleText": "我的"
+            }
+        },
+        {
+            "path": "pages/VIP/index",
+            "style": {
+                "navigationBarTitleText": "uni-app"
+            }
+        },
+        {
+            "path": "pages/VIP/paySuccess",
+            "style": {
+                "navigationStyle": "custom"
+            }
+        },
+      		{
 			"path": "pages/VIP/vipDetail",
 			"style": {
 				"navigationStyle": "custom"
 			}
-		}
-	],
-	"tabBar": {
-		"list": [{
-				"pagePath": "pages/index/index",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/VIP/index",
-				"text": "VIP会员"
-			},
-			{
-				"pagePath": "pages/UserCenter/index",
-				"text": "我的"
-			}
-		]
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+		},
+        {
+            "path": "pages/Product/index",
+            "style": {
+                "navigationBarTitleText": "商品名称"
+            }
+        }
+    ],
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/VIP/index",
+                "text": "VIP会员"
+            },
+            {
+                "pagePath": "pages/UserCenter/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "uni-app",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    }
 }

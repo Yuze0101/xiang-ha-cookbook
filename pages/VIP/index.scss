@@ -1,0 +1,108 @@
+@import '../../scss/global.scss';
+.container {
+    padding: 0 32rpx;
+    .menu {
+        white-space: nowrap;
+        overflow-x: hidden;
+        .menu-item {
+            font-size: 24rpx;
+            display: inline-block;
+            padding: 36rpx 44rpx;
+            &.active {
+                font-size: 36rpx;
+            }
+        }
+    }
+    .vip-card {
+        height: 324rpx;
+        background-image: url('https://z3.ax1x.com/2021/08/30/hJygjP.png');
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .user {
+            padding: 32rpx;
+            @include flex-center-row;
+            .avatar {
+                width: 128rpx;
+                height: 128rpx;
+                padding-right: 18rpx;
+            }
+            .text {
+                color: #fff;
+                flex: 1;
+                .row1 {
+                    @include font-gray;
+                    @include flex-center-row;
+                    justify-content: space-between;
+                    padding-bottom: 26rpx;
+                    .vip-btn {
+                        width: 108rpx;
+                        height: 34rpx;
+                        color: rgb(118, 64, 31);
+                        line-height: 34rpx;
+                        font-size: 22rpx;
+                        margin: 0;
+                        background: none;
+                        background-image: url('../../static/images/Vip/juxing221@2x.png');
+                        background-size: cover;
+                    }
+                }
+            }
+        }
+        .ad {
+            font-size: 22rpx;
+            color: rgb(249, 217, 179);
+            padding: 12rpx 32rpx;
+            background-image: url('https://z3.ax1x.com/2021/08/30/hJcdFe.png');
+            background-size: 100% 100%;
+            @include flex-center-row;
+            justify-content: space-between;
+            .ad-item {
+                @include flex-center-column;
+                .ad-img {
+                    width: 40rpx;
+                    height: 40rpx;
+                    padding: 12rpx;
+                }
+            }
+        }
+    }
+    .msg-flow {
+        .flow-item {
+            .title {
+                font-size: 40rpx;
+                font-weight: bold;
+            }
+            .scroll-box {
+                white-space: nowrap;
+                overflow-x: hidden;
+                .scroll-item {
+                    display: inline-block;
+                    .img {
+                        width: 314rpx;
+                        height: 220rpx;
+                    }
+                    .item-text {
+                        .item-title {
+                            font-size: 34rpx;
+                            color: rgb(87, 87, 87);
+                        }
+                        .item-desc {
+                            @include flex-center-row;
+                            .liulan-text {
+                                font-size: 18rpx;
+                                color: rgb(170, 170, 170);
+                            }
+                            .mini-icon {
+                                width: 24rpx;
+                                height: 24rpx;
+                                margin-right: 100rpx;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
