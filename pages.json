@@ -29,6 +29,12 @@
             "style": {
                 "navigationBarTitleText": "uni-app"
             }
+        },
+        {
+            "path": "pages/Product/index",
+            "style": {
+                "navigationBarTitleText": "商品名称"
+            }
         }
     ],
     "tabBar": {
