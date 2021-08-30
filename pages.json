@@ -36,12 +36,12 @@
                 "navigationStyle": "custom"
             }
         },
-      		{
-			"path": "pages/VIP/vipDetail",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
+        {
+            "path": "pages/VIP/vipDetail",
+            "style": {
+                "navigationStyle": "custom"
+            }
+        },
         {
             "path": "pages/Product/index",
             "style": {
@@ -67,7 +67,7 @@
     },
     "globalStyle": {
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
+        "navigationBarTitleText": "香哈菜谱",
         "navigationBarBackgroundColor": "#F8F8F8",
         "backgroundColor": "#F8F8F8"
     }
