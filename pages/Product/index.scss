@@ -2,13 +2,25 @@
 .conteiner {
 	background-color: rgb(246, 247, 248);
 }
+.HeadContainer {
+	background-image: url("https://z3.ax1x.com/2021/08/30/htZrN9.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.Title {
+	padding-top: 100rpx;
+	line-height: 50rpx;
+	font-size: 36rpx;
+	text-align: center;
+	color: white;
+}
 .Header {
 	width: 750rpx;
 	height: 50rpx;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background-color: rgb(238, 123, 45);
+	padding-top: 20rpx;
 	image {
 		height: 45rpx;
 		width: 45rpx;
@@ -31,17 +43,17 @@
 		background-color: rgba(0, 0, 0, 0.7);
 		@include flex-center-column;
 		justify-content: center;
-		color: #EDD7B2;
+		color: #edd7b2;
 		.playerBTN {
 			width: 300rpx;
 			text-align: center;
 			line-height: 60rpx;
-			background-color: #EDD7B2;
+			background-color: #edd7b2;
 			border-radius: 50rpx;
-			color: #8A5635;
+			color: #8a5635;
 			font-weight: bold;
 			margin: 40rpx 0rpx;
-}
+		}
 	}
 }
 .playerInfo {
@@ -125,7 +137,7 @@
 		}
 	}
 	.item-box {
-        padding-bottom: 20rpx;
+		padding-bottom: 20rpx;
 		.item {
 			@include flex-center-row;
 			justify-content: space-between;
@@ -136,13 +148,13 @@
 				display: inline-block;
 			}
 		}
-        .itemHeader {
-            .itemTitle {
-                font-weight: bold;
-            }
-            .remove {
-                color: rgb(155,155,155);
-            }
-        }
+		.itemHeader {
+			.itemTitle {
+				font-weight: bold;
+			}
+			.remove {
+				color: rgb(155, 155, 155);
+			}
+		}
 	}
 }
