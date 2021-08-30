@@ -1,5 +1,6 @@
 <template>
-	<view>
+	<view class="container ">
+		<view class="Header">菜品搜索</view>
 		<view class="searchBox">
 			<input type="text" placeholder="请输入内容" class="inputItem" />
 			<text class="searchBtn">搜索</text>

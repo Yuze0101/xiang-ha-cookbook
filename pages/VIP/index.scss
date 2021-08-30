@@ -1,6 +1,17 @@
 @import '../../scss/global.scss';
 .container {
     padding: 0 32rpx;
+    background-image: url("https://z3.ax1x.com/2021/08/30/htZrN9.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+    .Header {
+        padding-top: 100rpx;
+        line-height: 50rpx;
+        font-size: 36rpx;
+        text-align: center;
+        color: white;
+        padding-bottom: 30rpx;
+    }
     .menu {
         white-space: nowrap;
         overflow-x: hidden;
@@ -8,6 +19,7 @@
             font-size: 24rpx;
             display: inline-block;
             padding: 36rpx 44rpx;
+            color: white;
             &.active {
                 font-size: 36rpx;
             }

@@ -9,13 +9,13 @@
         {
             "path": "pages/index/search",
             "style": {
-                "navigationBarTitleText": "菜谱搜索"
+                "navigationStyle": "custom"
             }
         },
         {
             "path": "pages/index/categories",
             "style": {
-                "navigationBarTitleText": "食材分类"
+                "navigationStyle": "custom"
             }
         },
         {
@@ -27,7 +27,7 @@
         {
             "path": "pages/VIP/index",
             "style": {
-                "navigationBarTitleText": "VIP会员"
+                "navigationStyle": "custom"
             }
         },
         {
@@ -45,7 +45,7 @@
         {
             "path": "pages/Product/index",
             "style": {
-                "navigationBarTitleText": "商品名称"
+                "navigationStyle": "custom"
             }
         }
     ],
