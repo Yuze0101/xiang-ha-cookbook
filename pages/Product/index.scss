@@ -1,0 +1,126 @@
+@import "../../scss/global.scss";
+.conteiner {
+	background-color: rgb(246, 247, 248);
+}
+.Header {
+	width: 750rpx;
+	height: 50rpx;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: rgb(238, 123, 45);
+	image {
+		height: 45rpx;
+		width: 45rpx;
+		padding-right: 20rpx;
+	}
+}
+.player {
+	height: 386rpx;
+	image {
+		width: 100%;
+		height: 100%;
+	}
+}
+.playerInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20rpx;
+	background-color: white;
+	.buyVipButton {
+		width: 686rpx;
+		line-height: 88rpx;
+		text-align: center;
+		background-color: rgb(240, 195, 121);
+		color: white;
+		font-size: 28rpx;
+		border-radius: 10rpx;
+	}
+	.menuName {
+		font-weight: bold;
+		padding-top: 20rpx;
+		line-height: 96rpx;
+	}
+	.cardDataBox {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		box-sizing: border-box;
+		padding-bottom: 20rpx;
+		color: rgb(170, 170, 170);
+		.cardItemData {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 18rpx;
+			image {
+				width: 30rpx;
+				height: 30rpx;
+				padding: 0rpx 10rpx;
+			}
+		}
+	}
+}
+.menuInfoBox {
+	padding: 28rpx 0rpx;
+	.menuInfo {
+		background-color: white;
+		padding: 0rpx 35rpx;
+
+		font-size: 28rpx;
+		.menuTitle {
+			font-weight: bold;
+			line-height: 70rpx;
+			letter-spacing: 2rpx;
+		}
+		.menuText {
+			color: rgb(104, 104, 104);
+			line-height: 40rpx;
+		}
+	}
+}
+.menuItem {
+	background-color: white;
+	padding: 28rpx;
+	.cardDataBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		padding-bottom: 20rpx;
+		color: rgb(170, 170, 170);
+		.cardItemData {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 18rpx;
+			image {
+				width: 30rpx;
+				height: 30rpx;
+				padding: 0rpx 10rpx;
+			}
+		}
+	}
+	.item-box {
+        padding-bottom: 20rpx;
+		.item {
+			@include flex-center-row;
+			justify-content: space-between;
+			border-bottom: 1px solid #f4f4f4;
+			padding: 16rpx 18rpx;
+			font-size: 28rpx;
+			text {
+				display: inline-block;
+			}
+		}
+        .itemHeader {
+            .itemTitle {
+                font-weight: bold;
+            }
+            .remove {
+                color: rgb(155,155,155);
+            }
+        }
+	}
+}

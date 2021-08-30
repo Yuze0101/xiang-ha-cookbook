@@ -7,6 +7,18 @@
             }
         },
         {
+            "path": "pages/index/search",
+            "style": {
+                "navigationBarTitleText": "菜谱搜索"
+            }
+        },
+        {
+            "path": "pages/index/categories",
+            "style": {
+                "navigationBarTitleText": "食材分类"
+            }
+        },
+        {
             "path": "pages/UserCenter/index",
             "style": {
                 "navigationBarTitleText": "我的"
@@ -16,6 +28,12 @@
             "path": "pages/VIP/index",
             "style": {
                 "navigationBarTitleText": "uni-app"
+            }
+        },
+        {
+            "path": "pages/Product/index",
+            "style": {
+                "navigationBarTitleText": "商品名称"
             }
         }
     ],

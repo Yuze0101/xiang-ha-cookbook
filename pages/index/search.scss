@@ -1,0 +1,173 @@
+.searchBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 750rpx;
+	height: 112rpx;
+	background-color: rgb(238, 123, 45);
+	padding-left: 98rpx;
+	padding-right: 34rpx;
+	box-sizing: border-box;
+}
+.inputItem {
+	width: 100%;
+	height: 60rpx;
+	background-color: white;
+	background-image: url("../../static/images/@2/caipusousuo_slices/mengbanzu\ 2@2x.png");
+	background-repeat: no-repeat;
+	background-size: 40rpx;
+	background-position: 20rpx center;
+	padding-left: 70rpx;
+	border-radius: 10rpx;
+}
+.searchBtn {
+	width: 20%;
+	text-align: center;
+	font-size: 32rpx;
+	color: white;
+	font-weight: bold;
+}
+.scrollBox {
+	width: 750rpx;
+	height: 430rpx;
+	padding: 0rpx 28rpx;
+}
+.scrollTitle {
+	width: 750rpx;
+	height: 60rpx;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-weight: bold;
+	letter-spacing: 1rpx;
+	padding: 20rpx 0rpx;
+}
+.scrollTitleImg {
+	height: 50rpx;
+	width: 50rpx;
+}
+.scroll-view_H {
+	width: 750rpx;
+	height: 330rpx;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.scroll-view-item_H {
+	width: 326rpx;
+	height: 330rpx;
+	display: inline-block;
+	border-radius: 20rpx;
+	padding: 10rpx;
+	.scrollItemImgBox {
+		width: 100%;
+		height: 220rpx;
+		background-color: rgb(249, 249, 249);
+		image {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.scrollItemInfo {
+		width: 100%;
+		height: 104rpx;
+		background-color: rgb(249, 249, 249);
+		box-sizing: border-box;
+		padding: 0rpx 20rpx;
+		.scrollItemTitle {
+			font-size: 24rpx;
+			font-weight: bold;
+			line-height: 50rpx;
+			word-break: break-all;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+		}
+		.scrollItemDataBox {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
+			padding-right: 60rpx;
+			.scrollItemData {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-size: 18rpx;
+				image {
+					width: 30rpx;
+					height: 30rpx;
+				}
+			}
+		}
+	}
+}
+.infoFlow {
+	width: 750rpx;
+	box-sizing: border-box;
+	padding: 40rpx 28rpx;
+	.rowCard {
+		width: 100%;
+		height: 230rpx;
+        padding: 10rpx 0rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.imgBox {
+			width: 320rpx;
+			height: 230rpx;
+			image {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.cardInfoBox {
+			width: 350rpx;
+			height: 230rpx;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			.cardInfo {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				.cardTitle {
+					font-size: 28rpx;
+					font-weight: bold;
+					line-height: 60rpx;
+				}
+				.cardDes {
+					font-size: 22rpx;
+					line-height: 40rpx;
+					color: rgb(179, 179, 179);
+					word-break: break-all;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					overflow: hidden;
+				}
+			}
+			.cardDataBox {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				box-sizing: border-box;
+                padding-bottom: 20rpx;
+				padding-right: 60rpx;
+				.cardItemData {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					font-size: 18rpx;
+					image {
+						width: 30rpx;
+						height: 30rpx;
+					}
+				}
+			}
+		}
+	}
+}
