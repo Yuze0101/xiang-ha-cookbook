@@ -1,10 +1,22 @@
+.container {
+	background-image: url("https://z3.ax1x.com/2021/08/30/htV2wQ.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.Header {
+	padding-top: 100rpx;
+	line-height: 50rpx;
+	font-size: 36rpx;
+	text-align: center;
+	color: white;
+}
 .selectBox {
 	width: 750rpx;
 	height: 72rpx;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	background-color: rgb(238, 123, 45);
+	padding-top: 20rpx;
 	.buttonBox {
 		border: 1rpx solid white;
 		border-radius: 20rpx;
@@ -34,7 +46,7 @@
 	align-items: center;
 	width: 750rpx;
 	height: 112rpx;
-	background-color: rgb(238, 123, 45);
+	// background-color: rgb(238, 123, 45);
 	padding: 0rpx 26rpx;
 	box-sizing: border-box;
 	.inputItem {
@@ -53,7 +65,7 @@
 .page-section-spacing {
 	display: flex;
 	scroll-view {
-		height: calc(100vh - 184rpx);
+		height: calc(100vh - 357rpx);
 	}
 	.list-left {
 		width: 25%;

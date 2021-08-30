@@ -9,13 +9,13 @@
         {
             "path": "pages/index/search",
             "style": {
-                "navigationBarTitleText": "菜谱搜索"
+                "navigationStyle": "custom"
             }
         },
         {
             "path": "pages/index/categories",
             "style": {
-                "navigationBarTitleText": "食材分类"
+                "navigationStyle": "custom"
             }
         },
         {
@@ -27,7 +27,7 @@
         {
             "path": "pages/VIP/index",
             "style": {
-                "navigationBarTitleText": "uni-app"
+                "navigationStyle": "custom"
             }
         },
         {
@@ -36,16 +36,16 @@
                 "navigationStyle": "custom"
             }
         },
-      		{
-			"path": "pages/VIP/vipDetail",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
+        {
+            "path": "pages/VIP/vipDetail",
+            "style": {
+                "navigationStyle": "custom"
+            }
+        },
         {
             "path": "pages/Product/index",
             "style": {
-                "navigationBarTitleText": "商品名称"
+                "navigationStyle": "custom"
             }
         }
     ],
@@ -67,7 +67,7 @@
     },
     "globalStyle": {
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
+        "navigationBarTitleText": "香哈菜谱",
         "navigationBarBackgroundColor": "#F8F8F8",
         "backgroundColor": "#F8F8F8"
     }
