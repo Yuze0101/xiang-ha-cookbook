@@ -6,6 +6,11 @@
 		</view>
 		<view class="player">
 			<image src="../../static/images/@2/midouyichu _slices/tupian1@2x.png" mode="" />
+			<view class="alertVIP">
+				<view>开通会员观看时评做法</view>
+				<view class="playerBTN">立即开通</view>
+				<view>已是会员，立即登录></view>
+			</view>
 		</view>
 		<view class="playerInfo">
 			<view class="buyVipButton">会员低至2元/月，免广告、看10000+名厨视频</view>
