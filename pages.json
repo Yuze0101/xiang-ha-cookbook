@@ -36,6 +36,12 @@
                 "navigationStyle": "custom"
             }
         },
+      		{
+			"path": "pages/VIP/vipDetail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
         {
             "path": "pages/Product/index",
             "style": {
