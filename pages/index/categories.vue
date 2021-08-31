@@ -13,14 +13,8 @@
 		<view class="page-section-spacing">
 			<view class="list-left">
 				<scroll-view scroll-y="true">
-					<block>
+					<block v-for="item in categories" :key="item._id">
 						<view class="scroll-view-item active">1</view>
-					</block>
-					<block>
-						<view class="scroll-view-item">2</view>
-					</block>
-					<block>
-						<view class="scroll-view-item">3</view>
 					</block>
 				</scroll-view>
 			</view>
@@ -30,23 +24,38 @@
 						<view class="scroll-view-item-right">123</view>
 						<view class="goods_box">
 							<view class="goods_item">
-								<image class="goods_img" src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"></image>
+								<image
+									class="goods_img"
+									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
+								></image>
 								<text class="goods_text">菜名</text>
 							</view>
 							<view class="goods_item">
-								<image class="goods_img" src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"></image>
+								<image
+									class="goods_img"
+									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
+								></image>
 								<text class="goods_text">菜名</text>
 							</view>
 							<view class="goods_item">
-								<image class="goods_img" src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"></image>
+								<image
+									class="goods_img"
+									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
+								></image>
 								<text class="goods_text">菜名</text>
 							</view>
 							<view class="goods_item">
-								<image class="goods_img" src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"></image>
+								<image
+									class="goods_img"
+									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
+								></image>
 								<text class="goods_text">菜名</text>
 							</view>
 							<view class="goods_item">
-								<image class="goods_img" src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"></image>
+								<image
+									class="goods_img"
+									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
+								></image>
 								<text class="goods_text">菜名</text>
 							</view>
 						</view>
@@ -58,7 +67,39 @@
 </template>
 
 <script>
-	export default {}
+	import $request from "@/apis/request"
+	export default {
+		data() {
+			return {
+				categories: [],
+				activeId: 0,
+				current: {},
+			}
+		},
+		onLoad() {
+			this.getCategoryData()
+		},
+		methods: {
+			changCategories(_id) {
+				;(this.activeId = _id), (this.current = this.categories.find((item) => item.cat_id == _id).children)
+			},
+			async getCategoryData() {
+				const res = await $request({
+					url: "/categories",
+				})
+				console.log(res);
+				this.categories = res.data.message
+				this.activeId = res.data.message[0].cat_id
+				this.currentGoods = res.data.message[0].children
+				console.log(this.currentGoods)
+			},
+			toItemList(e) {
+				wx.navigateTo({
+					url: `/pages/index/search?id=${e}`,
+				})
+			},
+		},
+	}
 </script>
 
 <style scoped lang="scss">
