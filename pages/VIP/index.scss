@@ -1,9 +1,9 @@
 @import '../../scss/global.scss';
 .container {
     padding: 0 32rpx;
-    background-image: url("https://z3.ax1x.com/2021/08/30/htZrN9.png");
-	background-repeat: no-repeat;
-	background-size: contain;
+    background-image: url('https://z3.ax1x.com/2021/08/30/htZrN9.png');
+    background-repeat: no-repeat;
+    background-size: contain;
     .Header {
         padding-top: 100rpx;
         line-height: 50rpx;
@@ -39,6 +39,7 @@
                 width: 128rpx;
                 height: 128rpx;
                 padding-right: 18rpx;
+                border-radius: 50%;
             }
             .text {
                 color: #fff;
@@ -91,9 +92,32 @@
                 overflow-x: hidden;
                 .scroll-item {
                     display: inline-block;
-                    .img {
+                    margin-right: 20rpx;
+                    position: relative;
+
+                    .video {
                         width: 314rpx;
                         height: 220rpx;
+                        border-radius: 10rpx;
+                        -webkit-border-radius: 10rpx;
+                        -moz-border-radius: 10rpx;
+                        -ms-border-radius: 10rpx;
+                        -o-border-radius: 10rpx;
+                        &::after {
+                            content: '123123';
+                            text-align: center;
+                            line-height: 30rpx;
+                            position: absolute;
+                            font-size: 24rpx;
+                            bottom: 20rpx;
+                            right: 10rpx;
+                            color: #fff;
+                            background-color: rgba(0, 0, 0, 0.294);
+                            border-radius: 10rpx;
+                            display: inline-block;
+                            height: 30rpx;
+                            width: 100rpx;
+                        }
                     }
                     .item-text {
                         .item-title {
