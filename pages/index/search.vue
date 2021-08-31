@@ -87,7 +87,7 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options)
+			// console.log(options)
 			this.search = options.search
 			this.getVideo()
 			this.getFlow()
@@ -100,7 +100,7 @@
 					url: "/search/memberRecommend",
 				})
 				this.scrollData = res.data.message
-				console.log(this.scrollData)
+				// console.log(this.scrollData)
 			},
 			async getFlow() {
 				const res = await $request({
@@ -111,17 +111,17 @@
 					},
 				})
 				this.flowData = res.data.menus
-				console.log(this.flowData)
+				// console.log(this.flowData)
 			},
 			handleSearch() {
 				//搜索
-				console.log(this.search)
+				// console.log(this.search)
 				this.getFlow()
 			},
 			toProduct(e) {
 				//跳转到详情
 				wx.navigateTo({
-					url: `/pages/Product/index?goods_id=${e}`,
+					url: `/pages/Product/index?id=${e}`,
 				})
 			},
 			videoTimeUpdateEvent(e) {
