@@ -9,6 +9,12 @@
 	font-size: 36rpx;
 	text-align: center;
 	color: white;
+	position: relative;
+	text {
+		position: absolute;
+		left: 20rpx;
+		font-size: 30rpx;
+	}
 }
 .selectBox {
 	width: 750rpx;

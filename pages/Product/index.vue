@@ -1,7 +1,10 @@
 <template>
 	<view class="container">
 		<view class="HeadContainer">
-			<view class="Title">{{ meunData.name }}</view>
+			<view class="Title"
+				>{{ meunData.name }}
+				<text @tap="back">返回</text>
+			</view>
 			<view class="Header">
 				<image src="../../static/images/@2/midouyichu _slices/xuhuan@2x.png" mode="" />
 				<image src="../../static/images/@2/midouyichu _slices/zhuanfa@2x.png" mode="" />
@@ -111,7 +114,7 @@
 	export default {
 		data() {
 			return {
-				currentId: "601fa488882000007800670e",
+				currentId: "",
 				meunData: {},
 				guessLikeList: [],
 			}
@@ -138,12 +141,15 @@
 				console.log(this.meunData)
 			},
 			async getGuessLikeList(token) {
-                const res = await $request({
-                    url: '/vip/likeMenu',
-                    token,
-                })
-                this.guessLikeList = res.data.menus
-            },
+				const res = await $request({
+					url: "/vip/likeMenu",
+					token,
+				})
+				this.guessLikeList = res.data.menus
+			},
+			back(e) {
+				uni.navigateBack({ delta: 1 })
+			},
 		},
 	}
 </script>
