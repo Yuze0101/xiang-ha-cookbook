@@ -13,6 +13,11 @@
 	font-size: 36rpx;
 	text-align: center;
 	color: white;
+	text {
+		position: absolute;
+		left: 20rpx;
+		font-size: 30rpx;
+	}
 }
 .Header {
 	width: 750rpx;
@@ -180,7 +185,7 @@
 				-ms-border-radius: 10rpx;
 				-o-border-radius: 10rpx;
 				&::after {
-					content: '123123';
+					content: "123123";
 					text-align: center;
 					line-height: 30rpx;
 					position: absolute;

@@ -1,6 +1,8 @@
 <template>
 	<view class="container">
-		<view class="Header">菜品搜索</view>
+		<view class="Header">菜品搜索
+			<text @tap="back">返回</text>
+		</view>
 		<view class="searchBox">
 			<input type="text" placeholder="请输入内容" class="inputItem" v-model="search" />
 			<text class="searchBtn" @click="handleSearch">搜索</text>
@@ -123,6 +125,9 @@
 				wx.navigateTo({
 					url: `/pages/Product/index?id=${e}`,
 				})
+			},
+			back(e) {
+				uni.navigateBack({delta: 1})
 			},
 			videoTimeUpdateEvent(e) {
 				//视频时长获取

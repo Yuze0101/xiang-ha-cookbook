@@ -1,6 +1,8 @@
 <template>
 	<view class="container">
-		<view class="Header">食材分类</view>
+		<view class="Header">食材分类
+			<text @tap="back">返回</text>
+		</view>
 		<view class="selectBox">
 			<view class="buttonBox">
 				<view class="Active">分类</view>
@@ -72,6 +74,9 @@
 				wx.navigateTo({
 					url: `/pages/index/search?search=${e}`,
 				})
+			},
+			back(e) {
+				uni.navigateBack({delta: 1})
 			},
 		},
 	}
