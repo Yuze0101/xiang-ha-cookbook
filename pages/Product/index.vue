@@ -124,6 +124,7 @@
 			}
 		},
 		onLoad(options) {
+			console.log(options);
 			this.currentId = options.id
 			const token = uni.getStorageSync("token")
 			const userInfo = getApp().globalData.userInfo
