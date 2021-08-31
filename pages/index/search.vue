@@ -2,7 +2,7 @@
 	<view class="container">
 		<view class="Header">菜品搜索</view>
 		<view class="searchBox">
-			<input type="text" placeholder="请输入内容" class="inputItem" v-model="search"/>
+			<input type="text" placeholder="请输入内容" class="inputItem" v-model="search" />
 			<text class="searchBtn" @click="handleSearch">搜索</text>
 		</view>
 		<view class="scrollBox">
@@ -16,7 +16,13 @@
 			</view>
 			<view>
 				<scroll-view class="scroll-view_H" scroll-x="true" scroll-left="0">
-					<view id="demo1" class="scroll-view-item_H" v-for="item in scrollData" :key="item._id" @click ="toProduct(item._id)">
+					<view
+						id="demo1"
+						class="scroll-view-item_H"
+						v-for="item in scrollData"
+						:key="item._id"
+						@click="toProduct(item._id)"
+					>
 						<view class="scrollItemImgBox">
 							<video
 								:src="item.vid"
@@ -44,22 +50,22 @@
 			</view>
 		</view>
 		<view class="infoFlow">
-			<view class="rowCard" v-for="item in flowData" :key="item._id" @click ="toProduct(item._id)">
+			<view class="rowCard" v-for="item in flowData" :key="item._id" @click="toProduct(item._id)">
 				<view class="imgBox">
 					<image :src="item.coverpic" mode="" />
 				</view>
 				<view class="cardInfoBox">
 					<view class="cardInfo">
-						<text class="cardTitle">{{item.name}}</text>
-						<text class="cardDes">{{item.tips[0].tipdescribe[0]}}</text>
+						<text class="cardTitle">{{ item.name }}</text>
+						<text class="cardDes">{{ item.tips[0].tipdescribe[0] }}</text>
 					</view>
 					<view class="cardDataBox">
 						<view class="cardItemData">
-							<text class="cardItemNumber">100</text>
+							<text class="cardItemNumber">{{ item.pageview }}</text>
 							<image src="../../static/images/@2/caipusousuo_slices/mengbanzu278@2x.png" />
 						</view>
 						<view class="cardItemData">
-							<text class="cardItemNumber">100</text>
+							<text class="cardItemNumber">{{ item.collections }}</text>
 							<image src="../../static/images/@2/caipusousuo_slices/mengbanzu279@2x.png" />
 						</view>
 					</view>
@@ -81,8 +87,10 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options);
+			console.log(options)
+			this.search = options.search
 			this.getVideo()
+			this.getFlow()
 			//TODO 接受路由传参并调用搜索方法
 		},
 
@@ -98,16 +106,16 @@
 				const res = await $request({
 					url: "/search/searchMenu",
 					method: "POST",
-					data:{
-						val:this.search
-					}
+					data: {
+						val: this.search,
+					},
 				})
 				this.flowData = res.data.menus
-				console.log(this.flowData);
+				console.log(this.flowData)
 			},
-			handleSearch () {
+			handleSearch() {
 				//搜索
-				console.log(this.search);
+				console.log(this.search)
 				this.getFlow()
 			},
 			toProduct(e) {

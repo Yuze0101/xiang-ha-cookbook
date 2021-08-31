@@ -14,49 +14,24 @@
 			<view class="list-left">
 				<scroll-view scroll-y="true">
 					<block v-for="item in categories" :key="item._id">
-						<view class="scroll-view-item active">1</view>
+						<view class="scroll-view-item" :class="item.cat_id == activeId ? 'active' : ''"
+						@click="changCategories(item.cat_id)">{{
+							item.cat_name
+						}}</view>
 					</block>
 				</scroll-view>
 			</view>
 			<view class="list-right">
 				<scroll-view scroll-y="true">
 					<block>
-						<view class="scroll-view-item-right">123</view>
+						<view class="scroll-view-item-right">分类</view>
 						<view class="goods_box">
-							<view class="goods_item">
+							<view class="goods_item" v-for="item in current" :key="item.cat_id" @click="toItemList(item.cat_name)">
 								<image
 									class="goods_img"
-									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
+									:src="item.cat_icon?item.cat_icon:'../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png'"
 								></image>
-								<text class="goods_text">菜名</text>
-							</view>
-							<view class="goods_item">
-								<image
-									class="goods_img"
-									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
-								></image>
-								<text class="goods_text">菜名</text>
-							</view>
-							<view class="goods_item">
-								<image
-									class="goods_img"
-									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
-								></image>
-								<text class="goods_text">菜名</text>
-							</view>
-							<view class="goods_item">
-								<image
-									class="goods_img"
-									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
-								></image>
-								<text class="goods_text">菜名</text>
-							</view>
-							<view class="goods_item">
-								<image
-									class="goods_img"
-									src="../../static/images/@2/shicaifenlei_slices/jiachangcai@2x.png"
-								></image>
-								<text class="goods_text">菜名</text>
+								<text class="goods_text">{{item.cat_name}}</text>
 							</view>
 						</view>
 					</block>
@@ -87,15 +62,15 @@
 				const res = await $request({
 					url: "/categories",
 				})
-				console.log(res);
+				console.log(res)
 				this.categories = res.data.message
 				this.activeId = res.data.message[0].cat_id
-				this.currentGoods = res.data.message[0].children
-				console.log(this.currentGoods)
+				this.current = res.data.message[0].children
+				console.log(this.current)
 			},
 			toItemList(e) {
 				wx.navigateTo({
-					url: `/pages/index/search?id=${e}`,
+					url: `/pages/index/search?search=${e}`,
 				})
 			},
 		},
