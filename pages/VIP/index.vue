@@ -13,13 +13,24 @@
         <view class="vip-card">
             <view class="user">
                 <image
+                    v-if="!isLogin"
                     class="avatar"
                     src="../../static/images/Vip/zu431@2x.png"
                     mode=""
                 />
+                <image
+                    v-if="isLogin"
+                    class="avatar"
+                    :src="userInfo.avatarUrl"
+                    mode=""
+                />
                 <view class="text">
                     <view class="row1">
-                        <view>欢迎你，朋友</view>
+                        <view
+                            >欢迎你，{{
+                                isLogin ? userInfo.nickName : '朋友'
+                            }}</view
+                        >
                         <button class="vip-btn">开通</button>
                     </view>
                     <view>8元开通VIP，畅学明初独家菜谱</view>
@@ -58,23 +69,31 @@
                 <view class="title">VIP最新推荐</view>
                 <scroll-view scroll-x="true" class="scroll-box">
                     <!-- NOTE 循环 -->
-                    <view class="scroll-item">
-                        <image
-                            class="img"
-                            src="../../static/images/@2/caunbeilaingfanyichu_slices/tupian 2@2x.png"
-                            mode=""
+                    <view
+                        class="scroll-item"
+                        v-for="item in reccomendList"
+                        :key="item._id"
+                    >
+                        <video
+                            class="video"
+                            :src="item.vid"
+                            @loadedmetadata="videoTimeUpdateEvent"
                         />
                         <view class="item-text">
-                            <view class="item-title">川味凉粉</view>
+                            <view class="item-title">{{ item.name }}</view>
                             <view class="item-desc">
-                                <text class="liulan-text">12.3万</text>
+                                <text class="liulan-text">{{
+                                    item.pageview
+                                }}</text>
                                 <image
                                     class="mini-icon"
                                     src="../../static/images/@2/caunbeilaingfanyichu_slices/liulan@2x.png"
                                     mode=""
                                 />
 
-                                <text class="liulan-text">7.8万</text>
+                                <text class="liulan-text">{{
+                                    item.collections
+                                }}</text>
                                 <image
                                     class="mini-icon"
                                     src="../../static/images/@2/caunbeilaingfanyichu_slices/shoucamg@2x.png"
@@ -83,23 +102,37 @@
                             </view>
                         </view>
                     </view>
-                    <view class="scroll-item">
-                        <image
-                            class="img"
-                            src="../../static/images/@2/caunbeilaingfanyichu_slices/tupian 2@2x.png"
-                            mode=""
+                </scroll-view>
+            </view>
+            <view class="flow-item">
+                <view class="title">限时免费体验</view>
+                <scroll-view scroll-x="true" class="scroll-box">
+                    <!-- NOTE 循环 -->
+                    <view
+                        class="scroll-item"
+                        v-for="item in freeList"
+                        :key="item._id"
+                    >
+                        <video
+                            class="video"
+                            :src="item.vid"
+                            @loadedmetadata="videoTimeUpdateEvent"
                         />
                         <view class="item-text">
-                            <view class="item-title">川味凉粉</view>
+                            <view class="item-title">{{ item.name }}</view>
                             <view class="item-desc">
-                                <text class="liulan-text">12.3万</text>
+                                <text class="liulan-text">{{
+                                    item.pageview
+                                }}</text>
                                 <image
                                     class="mini-icon"
                                     src="../../static/images/@2/caunbeilaingfanyichu_slices/liulan@2x.png"
                                     mode=""
                                 />
 
-                                <text class="liulan-text">7.8万</text>
+                                <text class="liulan-text">{{
+                                    item.collections
+                                }}</text>
                                 <image
                                     class="mini-icon"
                                     src="../../static/images/@2/caunbeilaingfanyichu_slices/shoucamg@2x.png"
@@ -108,48 +141,37 @@
                             </view>
                         </view>
                     </view>
-                    <view class="scroll-item">
-                        <image
-                            class="img"
-                            src="../../static/images/@2/caunbeilaingfanyichu_slices/tupian 2@2x.png"
-                            mode=""
+                </scroll-view>
+            </view>
+            <view class="flow-item">
+                <view class="title">猜你喜欢</view>
+                <scroll-view scroll-x="true" class="scroll-box">
+                    <!-- NOTE 循环 -->
+                    <view
+                        class="scroll-item"
+                        v-for="item in guessLikeList"
+                        :key="item._id"
+                    >
+                        <video
+                            class="video"
+                            :src="item.vid"
+                            @loadedmetadata="videoTimeUpdateEvent"
                         />
                         <view class="item-text">
-                            <view class="item-title">川味凉粉</view>
+                            <view class="item-title">{{ item.name }}</view>
                             <view class="item-desc">
-                                <text class="liulan-text">12.3万</text>
+                                <text class="liulan-text">{{
+                                    item.pageview
+                                }}</text>
                                 <image
                                     class="mini-icon"
                                     src="../../static/images/@2/caunbeilaingfanyichu_slices/liulan@2x.png"
                                     mode=""
                                 />
 
-                                <text class="liulan-text">7.8万</text>
-                                <image
-                                    class="mini-icon"
-                                    src="../../static/images/@2/caunbeilaingfanyichu_slices/shoucamg@2x.png"
-                                    mode=""
-                                />
-                            </view>
-                        </view>
-                    </view>
-                    <view class="scroll-item">
-                        <image
-                            class="img"
-                            src="../../static/images/@2/caunbeilaingfanyichu_slices/tupian 2@2x.png"
-                            mode=""
-                        />
-                        <view class="item-text">
-                            <view class="item-title">川味凉粉</view>
-                            <view class="item-desc">
-                                <text class="liulan-text">12.3万</text>
-                                <image
-                                    class="mini-icon"
-                                    src="../../static/images/@2/caunbeilaingfanyichu_slices/liulan@2x.png"
-                                    mode=""
-                                />
-
-                                <text class="liulan-text">7.8万</text>
+                                <text class="liulan-text">{{
+                                    item.collections
+                                }}</text>
                                 <image
                                     class="mini-icon"
                                     src="../../static/images/@2/caunbeilaingfanyichu_slices/shoucamg@2x.png"
@@ -165,7 +187,81 @@
 </template>
 
 <script>
-    export default {}
+    import $request from '@/apis/request'
+    export default {
+        data() {
+            return {
+                reccomendList: [],
+                freeList: [],
+                guessLikeList: [],
+                vipChefsList: [],
+                userInfo: {},
+                isLogin: false,
+            }
+        },
+        onShow() {
+            const token = uni.getStorageSync('token')
+            const userInfo = getApp().globalData.userInfo
+            console.log(userInfo)
+            if (token) {
+                this.getReccomendList(token)
+                this.getFreeList(token)
+                this.getGuessLikeList(token)
+                this.getVipChefsList(token)
+                this.userInfo = userInfo
+                this.isLogin = true
+            }
+        },
+        methods: {
+            async getReccomendList(token) {
+                const res = await $request({
+                    url: '/vip/getRecommendMenuList',
+                    token,
+                })
+                this.reccomendList = res.data.menus
+            },
+            async getFreeList(token) {
+                const res = await $request({
+                    url: '/vip/getisFreeMenuList',
+                    token,
+                })
+                this.freeList = res.data.menus
+            },
+            async getGuessLikeList(token) {
+                const res = await $request({
+                    url: '/vip/likeMenu',
+                    token,
+                })
+                this.guessLikeList = res.data.menus
+            },
+            async getVipChefsList(token) {
+                const res = await $request({
+                    url: '/vip/vipExclusive',
+                    token,
+                })
+                this.vipChefsList = res.data.menus
+            },
+            videoTimeUpdateEvent(e) {
+                this.s_to_hs(e.detail.duration)
+            },
+            s_to_hs(s) {
+                //计算分钟
+                //算法：将秒数除以60，然后下舍入，既得到分钟数
+                let h
+                h = Math.floor(s / 60)
+                //计算秒
+                //算法：取得秒%60的余数，既得到秒数
+                s = Math.floor(s % 60)
+                //将变量转换为字符串
+                h += ''
+                s += ''
+                //如果只有一位数，前面增加一个0
+                h = h.length == 1 ? '0' + h : h
+                s = s.length == 1 ? '0' + s : s
+                return h + ':' + s
+            },
+        },
+    }
 </script>
 
 <style scoped lang="scss">
