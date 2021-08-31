@@ -4,7 +4,6 @@
         onLaunch: function () {
             console.log('App Launch')
             const token = uni.getStorageSync('token')
-            console.log(token)
             if (token) {
                 this.getUserInfo(token)
             }
@@ -25,7 +24,6 @@
                         token,
                     },
                 })
-                console.log(res.data[0])
                 getApp().globalData.userInfo = res.data[0]
             },
         },
