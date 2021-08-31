@@ -28,10 +28,9 @@
 
 		<!-- nav部分 -->
 		<view class="nav">
-			<view class="nav-item" v-for="item in nav" :key='item._id'>
+			<view class="nav-item" v-for="item in nav" :key='item._id' @click="navigateTo(item.name)">
 				<image class="nav-img" :src="item.image_src" mode=""></image>
 				<view class="">
-
 					<text>{{item.name}}</text>
 				</view>
 			</view>
@@ -68,7 +67,7 @@
 
 		<!-- 美食展示部分 -->
 		<view class="food">
-			<view class="food-item" v-for="item in foods" :key="item._id">
+			<view class="food-item" v-for="item in foods" :key="item._id" @click="toDetail(item.__id)">
 				<image :src="item.coverpic" mode=""></image>
 				<view class="p1">
 					<text>{{item.name}}</text>
@@ -137,7 +136,19 @@
 			async getRecommends(){
 				const res = await $request({url:'/home/recommend'})
 				this.foods = res.data.message
-				console.log(123,this.foods);
+				console.log(this.foods);
+			},
+			//跳转分类页
+			navigateTo(name){
+				uni.navigateTo({
+					url:"/pages/index/categories?name="+name
+				})
+			},
+			//跳转详情页
+			toDetail(id){
+				uni.navigateTo({
+					url:'/pages/Product/index?id='+id
+				})
 			}
 		}
 	}

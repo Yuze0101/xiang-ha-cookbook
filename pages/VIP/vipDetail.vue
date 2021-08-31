@@ -1,148 +1,153 @@
 <template>
-	<view class="header">
-		<view class="title">
-			<text>我的会员</text>
-		</view>
-		<!-- 会员用户 -->
-		<view class="vips">
-			<view class="vips-left">
-				<view class="vips-avator">
-					<image v-for="(item,index) in avators" :src="item.imgSrc" mode="" :key='index'
-						:style="{height:'36rpx',width:'36rpx',position:'absolute',zIndex:index,left:`${24*index}rpx`,marginLeft:'24rpx',verticalAlign:'center'}">
-					</image>
-				</view>
-				<view class="vips-p">
-					<text>5593人已开通会员</text>
-				</view>
-			</view>
-			<view class="vips-right">
-				<text>购买查询</text>
-			</view>
-		</view>
+	<view class="main">
 
-		<!-- 立即登录模块 -->
-		<view class="register">
-			<view class="register-center">
-				<view class="center-left">
-					<image src="../../static/touxiang495@2x.png" mode=""></image>
-				</view>
-				<view class="center-right">
-					<view class="p-top">
-						<text>立即登录</text>
-						<text class="p-1">会员</text>
+		<view class="header">
+			<view class="title">
+				<text>我的会员</text>
+			</view>
+			<!-- 会员用户 -->
+			<view class="vips">
+				<view class="vips-left">
+					<view class="vips-avator">
+						<image v-for="(item,index) in avators" :src="item.imgSrc" mode="" :key='index'
+							:style="{height:'36rpx',width:'36rpx',position:'absolute',zIndex:index,left:`${24*index}rpx`,marginLeft:'24rpx',verticalAlign:'center'}">
+						</image>
 					</view>
-					<view class="p-bottom">
-						<text>开通会员尊享VIP权益</text>
+					<view class="vips-p">
+						<text>5593人已开通会员</text>
 					</view>
 				</view>
+				<view class="vips-right">
+					<text>购买查询</text>
+				</view>
 			</view>
-		</view>
 
-		<!-- 推荐月数模块 -->
-		<view class="months">
-			<view :class="['months-item',choose==item.id?'choosed':'']" v-for="item in months" :key='item.id'>
+			<!-- 立即登录模块 -->
+			<view class="register">
+				<view class="register-center">
+					<view class="center-left">
+						<image src="../../static/touxiang495@2x.png" mode=""></image>
+					</view>
+					<view class="center-right">
+						<view class="p-top">
+							<text>立即登录</text>
+							<text class="p-1">会员</text>
+						</view>
+						<view class="p-bottom">
+							<text>开通会员尊享VIP权益</text>
+						</view>
+					</view>
+				</view>
+			</view>
 
-				<view class="p1">
-					<text>{{item.title}}</text>
+			<!-- 推荐月数模块 -->
+			<view class="months">
+				<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
+					v-for="(item,index) in mouths" :key='item._id' @click="changeChoose(item.mouth);changeUserChoose(item._id)">
+
+					<view class="p1">
+						<text>{{item.mouth}}个月</text>
+					</view>
+					<view class="p2">
+						<text>￥{{item.salePrice}}</text>
+					</view>
+					<view class="p3">
+						<text>￥{{item.normalPrice}}</text>
+					</view>
+
 				</view>
-				<view class="p2">
-					<text>￥{{item.price1}}</text>
+			</view>
+
+			<!-- 开通模块 -->
+			<view class="recommend">
+				<text class="p1">恭喜</text>
+				<text class="p2">您获得2折开通会员特权！</text>
+				<view class="button" @click="showPopup">立即开通</view>
+			</view>
+
+			<!-- 弹出购买框 -->
+			<uni-popup ref="popup" type="bottom">
+				<view class="popup">
+					<view class="p111">
+						<text>开通VIP会员</text>
+					</view>
+
+					<view class="months">
+					<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
+						v-for="(item,index) in mouths" :key='item._id' @click="changeChoose(item.mouth);changeUserChoose(item._id)">
+
+							<view class="p1">
+								<text>{{item.mouth}}个月</text>
+							</view>
+							<view class="p2">
+								<text>￥{{item.salePrice}}</text>
+							</view>
+							<view class="p3">
+								<text>￥{{item.normalPrice}}</text>
+							</view>
+
+						</view>
+					</view>
+					<view class="recommend">
+						<text class="p1">恭喜</text>
+						<text class="p2">开通后立即全站去广告、免费看10000+名厨视频</text>
+						<view class="button" @click="openVip">立即购买</view>
+					</view>
 				</view>
-				<view class="p3">
-					<text>￥{{item.price2}}</text>
-				</view>
+
+			</uni-popup>
+
+
+
+			<view class="row">
 
 			</view>
-		</view>
 
-		<!-- 开通模块 -->
-		<view class="recommend">
-			<text class="p1">恭喜</text>
-			<text class="p2">您获得2折开通会员特权！</text>
-			<view class="button" @click="showPopup">立即开通</view>
-		</view>
-
-		<!-- 弹出购买框 -->
-		<uni-popup ref="popup" type="bottom">
-			<view class="popup">
-				<view class="p111">
-					<text>开通VIP会员</text>
-				</view>
-
-				<view class="months">
-					<view :class="['months-item',choose==item.id?'choosed':'']" v-for="item in months" :key='item.id'>
-
+			<!-- VIP特权模块 -->
+			<view class="myVip">
+				<text class="p1">VIP特权</text>
+				<view class="every" v-for="item in rights" :key="item.id">
+					<view class="left">
+						<image :src="item.imgSrc" mode=""></image>
+					</view>
+					<view class="right">
 						<view class="p1">
 							<text>{{item.title}}</text>
 						</view>
 						<view class="p2">
-							<text>￥{{item.price1}}</text>
+							<text>{{item.p}}</text>
 						</view>
-						<view class="p3">
-							<text>￥{{item.price2}}</text>
-						</view>
-
-					</view>
-				</view>
-			<view class="recommend">
-				<text class="p1">恭喜</text>
-				<text class="p2">开通后立即全站去广告、免费看10000+名厨视频</text>
-				<view class="button" @click="showPopup">立即购买</view>
-			</view>
-			</view>
-			
-		</uni-popup>
-
-
-
-		<view class="row">
-
-		</view>
-
-		<!-- VIP特权模块 -->
-		<view class="myVip">
-			<text class="p1">VIP特权</text>
-			<view class="every" v-for="item in rights" :key="item.id">
-				<view class="left">
-					<image :src="item.imgSrc" mode=""></image>
-				</view>
-				<view class="right">
-					<view class="p1">
-						<text>{{item.title}}</text>
-					</view>
-					<view class="p2">
-						<text>{{item.p}}</text>
 					</view>
 				</view>
 			</view>
-		</view>
 
-		<view class="row">
-		</view>
+			<view class="row">
+			</view>
 
-		<!-- 使用说明模块 -->
-		<view class="dec">
-			<text class="dec-p">会员使用说明</text>
-			<view class="p1 p2">
-				<text>1.会员服务一经开通，不支持退款；</text>
-			</view>
-			<view class="p1">
-				<text>2.如遇到苹果手机支付问题，建议参考Appstore支付流程；</text>
-			</view>
-			<view class="p1">
-				<text>3.若会员开通出现异常，请立即联系客服，我们会在三个工作日内给出处理结果；</text>
-			</view>
-			<view class="p1">
-				<text>4.会员常见问题、会员服务协议、会员隐私协议。</text>
+			<!-- 使用说明模块 -->
+			<view class="dec">
+				<text class="dec-p">会员使用说明</text>
+				<view class="p1 p2">
+					<text>1.会员服务一经开通，不支持退款；</text>
+				</view>
+				<view class="p1">
+					<text>2.如遇到苹果手机支付问题，建议参考Appstore支付流程；</text>
+				</view>
+				<view class="p1">
+					<text>3.若会员开通出现异常，请立即联系客服，我们会在三个工作日内给出处理结果；</text>
+				</view>
+				<view class="p1">
+					<text>4.会员常见问题、会员服务协议、会员隐私协议。</text>
+				</view>
 			</view>
 		</view>
 	</view>
 
 
-	</view>
 </template>
 
 <script>
+	import $request from '../../apis/request.js'
 	export default {
 		data() {
 			return {
@@ -165,26 +170,12 @@
 						imgSrc: '../../static/yonghu6@2x.png'
 					}
 				],
-				choose: 1,
-				months: [{
-						id: 1,
-						title: '12个月',
-						price1: 45,
-						price2: 144
-					},
-					{
-						id: 2,
-						title: '3个月',
-						price1: 18,
-						price2: 36
-					},
-					{
-						id: 3,
-						title: '1个月',
-						price1: 8,
-						price2: 14
-					}
-				],
+				choose: {
+					_id: '',
+					date: '',
+				},
+				userChoose:'',
+				mouths: [],
 				rights: [{
 					id: 1,
 					imgSrc: '../../static/caipu.png',
@@ -208,12 +199,58 @@
 				}, ]
 			}
 		},
+		onLoad() {
+			this.getVipList()
+		},
 		methods: {
 			showPopup() {
 				this.$refs.popup.open();
 			},
 			closePopup() {
 				this.$refs.popup.close();
+			},
+			//获取 VIP 套餐列表
+			async getVipList() {
+				const token = uni.getStorageSync('token');
+				const res = await $request({
+					url: '/user/topupList',
+					token
+				})
+				console.log(res);
+				this.mouths = res.data.data;
+				this.choose = {
+					_id: res.data.data[0]._id,
+					data: res.data.data[0].mouth
+				}
+				console.log(this.choose);
+			},
+			//开通会员
+			async openVip() {
+				const token = uni.getStorageSync('token');
+				const res = await $request({
+					url: "/user/openVip",
+					token,
+					data:this.choose
+				})
+				console.log(res);
+				if(res.data.code){
+					uni.showToast({
+						title:res.data.msg,
+					})
+					this.closePopup()
+				}
+			},
+			//修改用户选中的开通数据
+			changeChoose(mouths){
+				const _id = getApp().globalData.userInfo._id;
+				this.choose={
+					_id,
+					date:mouths+''
+				}
+				console.log(this.choose);
+			},
+			changeUserChoose(_id){
+				this.userChoose=_id;
 			}
 
 		}
@@ -221,6 +258,10 @@
 </script>
 
 <style scoped lang="scss">
+	.main {
+		background-color: #fff;
+	}
+
 	.header {
 		height: 508rpx;
 		background-color: #313131;
@@ -381,6 +422,9 @@
 				color: #fff;
 			}
 		}
+		.userChoose{
+			border: solid 2rpx red;;
+		}
 	}
 
 	.recommend {
@@ -498,8 +542,11 @@
 		overflow: hidden;
 		padding-bottom: 40rpx;
 
-		.choosed{
+		.choosed {
 			border: solid 2rpx #dcb66a;
+		}
+		.userChoose{
+			border: solid 2rpx red;;
 		}
 
 		.choosed::before {
@@ -520,11 +567,12 @@
 			text-align: center;
 			margin-top: 22rpx;
 		}
-		.p2{
+
+		.p2 {
 			font-weight: bold;
 			color: #000;
 			font-size: 26rpx;
 		}
-		
+
 	}
 </style>
