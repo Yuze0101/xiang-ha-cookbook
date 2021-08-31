@@ -10,7 +10,7 @@
             <view class="menu-item">快手菜</view>
             <view class="menu-item">快手菜</view>
         </scroll-view>
-        <view class="vip-card">
+        <view class="vip-card" @click="gotoBuyVip">
             <view class="user">
                 <image
                     v-if="!isLogin"
@@ -202,7 +202,6 @@
         onShow() {
             const token = uni.getStorageSync('token')
             const userInfo = getApp().globalData.userInfo
-            console.log(userInfo)
             if (token) {
                 this.getReccomendList(token)
                 this.getFreeList(token)
@@ -243,6 +242,11 @@
             },
             videoTimeUpdateEvent(e) {
                 this.s_to_hs(e.detail.duration)
+            },
+            gotoBuyVip() {
+                uni.navigateTo({
+                    url: '/pages/VIP/vipDetail',
+                })
             },
             s_to_hs(s) {
                 //计算分钟

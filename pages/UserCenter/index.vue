@@ -30,7 +30,7 @@
                     </view>
                 </view>
             </view>
-            <view class="vip">
+            <view class="vip" @click="gotoBuyVip">
                 <image
                     class="img"
                     src="../../static/images/@2/wode 1_slices/mengbanzu87@2x.png"
@@ -177,7 +177,6 @@
                     key: 'token',
                     data: res.data.token,
                     success() {
-                        console.log('save token success')
                         uni.reLaunch({
                             url: '/pages/UserCenter/index',
                         })
@@ -229,6 +228,11 @@
                     url: '/user/wxLogin',
                     method: 'POST',
                     data,
+                })
+            },
+            gotoBuyVip() {
+                uni.navigateTo({
+                    url: '/pages/VIP/vipDetail',
                 })
             },
         },
