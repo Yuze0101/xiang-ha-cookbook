@@ -75,9 +75,20 @@
 		width: 100%;
 		height: 220rpx;
 		background-color: rgb(249, 249, 249);
-		image {
+		position: relative;
+		video {
 			width: 100%;
 			height: 100%;
+		}
+		.videoTime {
+			position: absolute;
+			color: white;
+			font-size: 20rpx;
+			background-color: rgba(0, 0, 0, 0.7);
+			bottom: 20rpx;
+			right: 20rpx;
+			padding: 5rpx;
+			border-radius: 20rpx;
 		}
 	}
 	.scrollItemInfo {
@@ -123,7 +134,7 @@
 	.rowCard {
 		width: 100%;
 		height: 230rpx;
-        padding: 10rpx 0rpx;
+		padding: 10rpx 0rpx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -168,7 +179,7 @@
 				justify-content: space-between;
 				align-items: center;
 				box-sizing: border-box;
-                padding-bottom: 20rpx;
+				padding-bottom: 20rpx;
 				padding-right: 60rpx;
 				.cardItemData {
 					display: flex;
