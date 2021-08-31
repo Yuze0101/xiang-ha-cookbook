@@ -4,6 +4,9 @@
 		<view class="header">
 			<view class="title">
 				<text>我的会员</text>
+				<view class="title-back" @click="back">
+					返回
+				</view>
 			</view>
 			<!-- 会员用户 -->
 			<view class="vips">
@@ -251,7 +254,10 @@
 			},
 			changeUserChoose(_id){
 				this.userChoose=_id;
-			}
+			},
+			back(e) {
+				uni.navigateBack({delta: 1})
+			},
 
 		}
 	}
@@ -272,6 +278,13 @@
 			text-align: center;
 			font-size: 36rpx;
 			color: #fff;
+			position: relative;
+		}
+		.title-back{
+			position: absolute;
+			font-size: 30rpx;
+			left:36rpx;
+			top: 118rpx;
 		}
 
 		.vips {

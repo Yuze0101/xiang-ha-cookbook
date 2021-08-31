@@ -103,8 +103,10 @@
 				search: "",
 				banner: [],
 				nav: [],
-				secBanner: [],
-				foods: [],
+				secBanner: [{
+                    floor_title:''
+                }],
+				foods: []
 			}
 		},
 		computed: {
