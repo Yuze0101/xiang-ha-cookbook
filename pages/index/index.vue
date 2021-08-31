@@ -18,9 +18,9 @@
 		<view class="banner">
 			<swiper :indicator-dots="true" circular indicator-active-color='#d86f32' :autoplay="true" :interval="3000"
 				:duration="1000">
-				<swiper-item v-for="item in banner" :key="item.id">
+				<swiper-item v-for="item in banner" :key="item._id">
 					<view class="swiper-item">
-						<image :src="item.imgSrc" mode=""></image>
+						<image :src="item.image_src" mode=""></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -28,11 +28,11 @@
 
 		<!-- nav部分 -->
 		<view class="nav">
-			<view class="nav-item" v-for="item in nav" :key='item.id'>
-				<image class="nav-img" :src="item.imgSrc" mode=""></image>
+			<view class="nav-item" v-for="item in nav" :key='item._id'>
+				<image class="nav-img" :src="item.image_src" mode=""></image>
 				<view class="">
 
-					<text>{{item.title}}</text>
+					<text>{{item.name}}</text>
 				</view>
 			</view>
 		</view>
@@ -42,42 +42,42 @@
 			<view class="title-3-left">
 				<swiper class="title-3-left-item" :indicator-dots="true" circular indicator-active-color='#d86f32'
 					:autoplay="true" :interval="3000" :duration="1000">
-					<swiper-item v-for="item in secBanner" :key="item.id">
-						<image class="title-3-left-item" :src="item.imgSrc"></image>
+					<swiper-item v-for="(item,index) in secBanner[0].floor_imgs" :key='index'>
+						<image class="title-3-left-item" :src="item"></image>
 					</swiper-item>
 				</swiper>
 				<view class="title-3-title">
-					<text>冬至吃饺子</text>
+					<text>{{this.secBanner[0].floor_title.slice(1,6)}}</text>
 				</view>
 			</view>
 			<view class="title-3-right">
-				<view class="top">
+				<view class="top" v-for="item in secondBanner" :key="item._id">
 					<view class="title-3-title">
-						<text>每日开运菜</text>
+						<text>{{item.floor_title.slice(1,6)}}</text>
 					</view>
-					<image :src="right1Src" mode=""></image>
+					<image :src="item.floor_imgs[0]" mode=""></image>
 				</view>
-				<view class="bottom">
+				<!-- <view class="bottom">
 					<view class="title-3-title">
 						<text>减肥集中营</text>
 					</view>
 					<image :src="right2Src" mode=""></image>
-				</view>
+				</view> -->
 			</view>
 		</view>
 
 		<!-- 美食展示部分 -->
 		<view class="food">
-			<view class="food-item" v-for="item in foods" :key="item.id">
-				<image :src="item.imgSrc" mode=""></image>
+			<view class="food-item" v-for="item in foods" :key="item._id">
+				<image :src="item.coverpic" mode=""></image>
 				<view class="p1">
-					<text>{{item.title}}</text>
+					<text>{{item.name}}</text>
 				</view>
 				<view class="p2">
-					<text>{{item.num}}
+					<text>{{item.pageview}}
 					</text>
 					<image class="icon" src="../../static/mengban165@2x.png" mode=""></image>
-					<text class="p-right">{{item.like}}
+					<text class="p-right">{{item.collections}}
 					</text>
 					<image class="icon" src="../../static/mengban167@2x.png" mode=""></image>
 				</view>
@@ -88,121 +88,56 @@
 </template>
 
 <script>
+	import $request from '../../apis/request.js'
 	export default {
 		data() {
 			return {
 				search: '',
-				banner: [{
-						id: 1,
-						imgSrc: '../../static/NoPath-(91)@2x.png'
-					},
-					{
-						id: 2,
-						imgSrc: '../../static/NoPath-(91)@2x.png'
-					},
-					{
-						id: 3,
-						imgSrc: '../../static/NoPath-(91)@2x.png'
+				banner: [],
+				nav: [],
+				secBanner: [],
+				foods: []
+			}
+		},
+		computed: {
+			secondBanner() {
+				return this.secBanner.filter((item, index) => {
+					if (!index == 0) {
+						return item
 					}
-				],
-				nav: [{
-						id: 1,
-						title: '家常菜',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 2,
-						title: '甜点',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 3,
-						title: '素菜',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 4,
-						title: '凉菜',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 5,
-						title: '下饭菜',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 6,
-						title: '川菜',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 7,
-						title: '面食',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 8,
-						title: '汤',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 9,
-						title: '清淡',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					},
-					{
-						id: 10,
-						title: '分类',
-						imgSrc: '../../static/jiachangcia588@2x.png'
-					}
-				],
-				secBanner: [{
-						id: 1,
-						imgSrc: '../../static/dongzhi1@2x.png'
-					},
-					{
-						id: 2,
-						imgSrc: '../../static/dongzhi1@2x.png'
-					},
-					{
-						id: 3,
-						imgSrc: '../../static/dongzhi1@2x.png'
-					}, {
-						id: 4,
-						imgSrc: '../../static/dongzhi1@2x.png'
-					},
-				],
-				right1Src: '../../static/5b0394fa32431@2x.png',
-				right2Src: '../../static/5b0394fa32431@2x.png',
-				foods: [{
-						id: 1,
-						imgSrc: '../../static/1@2x.png',
-						title: '奶油泡芙',
-						num: '180.07万',
-						like: '3.9万'
-					},
-					{
-						id: 2,
-						imgSrc: '../../static/1-huifude@2x.png',
-						title: '大白兔奶茶',
-						num: '66.4万',
-						like: '2495'
-					},
-					{
-						id: 3,
-						imgSrc: '../../static/2@2x.png',
-						title: '树莓沙冰',
-						num: '216.0万',
-						like: '4.4万'
-					},
-					{
-						id: 4,
-						imgSrc: '../../static/3@2x.png',
-						title: '森林王国蛋糕',
-						num: '251.2万',
-						like: '7.9万'
-					},
-				]
+				})
+			}
+
+		},
+		onLoad() {
+			this.getBanners();
+			this.getNavs();
+			this.getSecBanners();
+			this.getRecommends()
+		},
+		methods: {
+			async getBanners() {
+				const res = await $request({
+					url: "/home/swiperdata"
+				})
+				this.banner = res.data.message;
+			},
+			async getNavs() {
+				const res = await $request({
+					url: "/home/catitems"
+				})
+				this.nav = res.data.message;
+			},
+			async getSecBanners() {
+				const res = await $request({
+					url: "/home/floorsdata"
+				})
+				this.secBanner = res.data.message;
+			},
+			async getRecommends(){
+				const res = await $request({url:'/home/recommend'})
+				this.foods = res.data.message
+				console.log(123,this.foods);
 			}
 		}
 	}
@@ -324,7 +259,7 @@
 			font-weight: bold;
 			font-size: 30rpx;
 			color: #fff;
-			background-color: rgba(216,111,50, 0.63);
+			background-color: rgba(216, 111, 50, 0.63);
 			height: 56rpx;
 			line-height: 56rpx;
 			text-align: center;
@@ -389,11 +324,13 @@
 				font-size: 20rpx;
 				color: #aaaaaa;
 				margin-top: 10rpx;
-				.p-right{
+
+				.p-right {
 					margin-left: 64rpx;
 				}
 			}
-			.icon{
+
+			.icon {
 				margin-left: 6rpx;
 				height: 25rpx;
 				width: 25rpx;
