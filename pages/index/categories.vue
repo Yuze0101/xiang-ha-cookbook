@@ -53,11 +53,13 @@
 				current: {},
 			}
 		},
-		onLoad() {
+		onLoad(options) {
+			console.log(options);
 			this.getCategoryData()
 		},
 		methods: {
 			changCategories(_id) {
+				console.log(_id);
 				;(this.activeId = _id), (this.current = this.categories.find((item) => item.cat_id == _id).children)
 			},
 			async getCategoryData() {

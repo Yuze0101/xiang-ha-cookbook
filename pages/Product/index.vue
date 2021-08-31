@@ -32,7 +32,7 @@
 					>浏览
 					<image src="../../static/images/@2/caipusousuo_slices/mengbanzu278@2x.png" />
 				</view>
-				<view class="cardItemData">
+				<view class="cardItemData" @tap="handleCollect(currentId)">
 					<text class="cardItemNumber">{{ meunData.collections }}</text
 					>收藏
 					<image src="../../static/images/@2/caipusousuo_slices/mengbanzu279@2x.png" />
@@ -153,7 +153,7 @@
 			},
 			async haveVisit(token) {
 				const userInfo = getApp().globalData.userInfo
-				const res = await $request({
+				await $request({
 					url: "/user/record",
 					method: "POST",
 					token,
@@ -175,7 +175,31 @@
 						menu_id: this.currentId,
 					},
 				})
-				console.log(res);
+				if (res.statusCode === 200) {
+					uni.showToast({
+						title: "喜欢成功",
+						duration: 2000,
+					})
+				}
+			},
+			async handleCollect(id) {
+				const token = uni.getStorageSync("token")
+				const userInfo = getApp().globalData.userInfo
+				const res = await $request({
+					url: "/user/collect",
+					method: "POST",
+					token,
+					data: {
+						user_id: userInfo._id,
+						menu_id: this.currentId,
+					},
+				})
+				if (res.statusCode === 200) {
+					uni.showToast({
+						title: "收藏成功",
+						duration: 2000,
+					})
+				}
 			},
 			back(e) {
 				uni.navigateBack({ delta: 1 })
