@@ -8,7 +8,7 @@
                     src="@/static/images/@2/wode 1_slices/zu428@2x.png"
                     mode=""
                 />
-                <view class="login">
+                <view class="login" @click="handleLogin">
                     <view>
                         <text>立即登录</text><br />
                         <text class="second">登录后可收藏喜欢的菜谱</text>
@@ -125,10 +125,28 @@
 </template>
 
 <script>
+    import $request from '@/apis/request'
     import TabMenu from '../../components/TabMenu/TabMenu.vue'
     export default {
         components: {
             TabMenu,
+        },
+
+        methods: {
+            async handleLogin() {
+                const res = await this.getUserProfile()
+                console.log(res)
+            },
+            getUserProfile() {
+                return new Promise((resolve, reject) => {
+                    wx.getUserProfile({
+                        desc: '必须授权才可以使用',
+                        success: (res) => {
+                            resolve(res.userInfo)
+                        },
+                    })
+                })
+            },
         },
     }
 </script>
