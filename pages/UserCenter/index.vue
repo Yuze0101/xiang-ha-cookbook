@@ -4,14 +4,26 @@
         <view class="container">
             <view class="user">
                 <image
+                    v-if="!isLogin"
                     class="avatar"
                     src="@/static/images/@2/wode 1_slices/zu428@2x.png"
                     mode=""
                 />
+                <image
+                    v-if="isLogin"
+                    class="avatar"
+                    :src="userInfo.avatarUrl"
+                    mode=""
+                />
                 <view class="login" @click="handleLogin">
                     <view>
-                        <text>立即登录</text><br />
-                        <text class="second">登录后可收藏喜欢的菜谱</text>
+                        <text v-if="!isLogin">立即登录</text>
+                        <text v-if="isLogin">{{ userInfo.nickName }}</text>
+                        <br />
+                        <text class="second" v-if="!isLogin"
+                            >登录后可收藏喜欢的菜谱</text
+                        >
+                        <text class="second" v-if="isLogin">欢迎您</text>
                     </view>
                     <view>
                         <text> > </text>
@@ -131,11 +143,46 @@
         components: {
             TabMenu,
         },
-
+        data() {
+            return {
+                userInfo: {},
+                isLogin: false,
+            }
+        },
+        onShow() {
+            if (this.getUserInfo() && this.getToken()) {
+                this.userInfo = { ...this.getUserInfo() }
+                this.isLogin = true
+            }
+        },
         methods: {
             async handleLogin() {
-                const res = await this.getUserProfile()
-                console.log(res)
+                if (this.isLogin) {
+                    uni.showToast({
+                        title: '您已登录',
+                        duration: 2000,
+                    })
+                    return
+                }
+                const userInfo = await this.getUserProfile()
+                getApp().globalData.userInfo = userInfo
+                const code = await this.getCode()
+                const res = await this.wxLogin({
+                    code,
+                    appId: 'wx4b9d2d7fde7df6c4',
+                    appSecret: 'def0d690e60e8b472857576e735df01d',
+                })
+                const res2 = await this.authDatabase(res.data.token, userInfo)
+                uni.setStorage({
+                    key: 'token',
+                    data: res.data.token,
+                    success() {
+                        console.log('save token success')
+                        uni.reLaunch({
+                            url: '/pages/UserCenter/index',
+                        })
+                    },
+                })
             },
             getUserProfile() {
                 return new Promise((resolve, reject) => {
@@ -145,6 +192,43 @@
                             resolve(res.userInfo)
                         },
                     })
+                })
+            },
+            getCode() {
+                return new Promise((resolve, reject) => {
+                    wx.login({
+                        success: (res) => {
+                            resolve(res.code)
+                        },
+                    })
+                })
+            },
+            getUserInfo() {
+                return getApp().globalData.userInfo
+            },
+            getToken() {
+                return uni.getStorageSync('token')
+            },
+            authDatabase(token, userInfo) {
+                const { avatarUrl, nickName, gender, province } = userInfo
+                return $request({
+                    url: '/user/auth',
+                    method: 'POST',
+                    token,
+                    data: {
+                        token,
+                        avatarUrl,
+                        nickName,
+                        gender,
+                        province,
+                    },
+                })
+            },
+            wxLogin(data) {
+                return $request({
+                    url: '/user/wxLogin',
+                    method: 'POST',
+                    data,
                 })
             },
         },
