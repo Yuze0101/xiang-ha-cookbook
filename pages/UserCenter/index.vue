@@ -37,7 +37,8 @@
                     mode=""
                 />
                 <view class="text-box">
-                    <view>升级为VIP</view>
+                    <view v-if="userInfo.vip">续费您的VIP</view>
+                    <view v-if="!userInfo.vip">升级为VIP</view>
                     <view> > </view>
                 </view>
             </view>
@@ -172,29 +173,29 @@
                     appSecret: 'def0d690e60e8b472857576e735df01d',
                 })
                 const res2 = await this.authDatabase(res.data.token, userInfo)
+				this.getUserInfoFromDatabase(res.data.token)
                 uni.setStorage({
                     key: 'token',
                     data: res.data.token,
                     success() {
-						this.getUserInfoFromDatabase(res.data.token)
                         uni.reLaunch({
                             url: '/pages/UserCenter/index',
                         })
                     },
                 })
             },
-			async getUserInfoFromDatabase(token) {
-			    const res = await $request({
-			        url: '/user/getUserInfo',
-			        method: 'GET',
-			        token,
-			        data: {
-			            token,
-			        },
-			    })
-			    // console.log(res.data[0])
-			    getApp().globalData.userInfo = res.data[0]
-			},
+            async getUserInfoFromDatabase(token) {
+                const res = await $request({
+                    url: '/user/getUserInfo',
+                    method: 'GET',
+                    token,
+                    data: {
+                        token,
+                    },
+                })
+                // console.log(res.data[0])
+                getApp().globalData.userInfo = res.data[0]
+            },
             getUserProfile() {
                 return new Promise((resolve, reject) => {
                     wx.getUserProfile({
@@ -243,9 +244,9 @@
                 })
             },
             gotoBuyVip() {
-				if (!this.isLogin) {
-					this.handleLogin();
-				}
+                if (!this.isLogin) {
+                    this.handleLogin()
+                }
                 uni.navigateTo({
                     url: '/pages/VIP/vipDetail',
                 })

@@ -29,15 +29,17 @@
 			<view class="register">
 				<view class="register-center">
 					<view class="center-left">
-						<image src="../../static/touxiang495@2x.png" mode=""></image>
+						<image :src="userAvatar" mode=""></image>
 					</view>
 					<view class="center-right">
 						<view class="p-top">
-							<text>立即登录</text>
+							<text v-if="!userVip">立即开通</text>
+							<text v-else>立即续费</text>
 							<text class="p-1">会员</text>
 						</view>
 						<view class="p-bottom">
-							<text>开通会员尊享VIP权益</text>
+							<text v-if="!userVip">开通会员尊享VIP权益</text>
+							<text v-else>续费会员尊享VIP权益</text>
 						</view>
 					</view>
 				</view>
@@ -46,7 +48,8 @@
 			<!-- 推荐月数模块 -->
 			<view class="months">
 				<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
-					v-for="(item,index) in mouths" :key='item._id' @click="changeChoose(item.mouth);changeUserChoose(item._id)">
+					v-for="(item,index) in mouths" :key='item._id'
+					@click="changeChoose(item.mouth);changeUserChoose(item._id)">
 
 					<view class="p1">
 						<text>{{item.mouth}}个月</text>
@@ -65,19 +68,24 @@
 			<view class="recommend">
 				<text class="p1">恭喜</text>
 				<text class="p2">您获得2折开通会员特权！</text>
-				<view class="button" @click="showPopup">立即开通</view>
+				<view class="button" @click="showPopup" >
+				<text v-if="!userVip">立即开通</text>
+				<text v-else>立即续费</text>
+				</view>
 			</view>
 
 			<!-- 弹出购买框 -->
 			<uni-popup ref="popup" type="bottom">
 				<view class="popup">
 					<view class="p111">
-						<text>开通VIP会员</text>
+						<text v-if="!userVip">开通VIP会员</text>
+						<text v-else>续费VIP会员</text>
 					</view>
 
 					<view class="months">
-					<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
-						v-for="(item,index) in mouths" :key='item._id' @click="changeChoose(item.mouth);changeUserChoose(item._id)">
+						<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
+							v-for="(item,index) in mouths" :key='item._id'
+							@click="changeChoose(item.mouth);changeUserChoose(item._id)">
 
 							<view class="p1">
 								<text>{{item.mouth}}个月</text>
@@ -177,7 +185,10 @@
 					_id: '',
 					date: '',
 				},
-				userChoose:'',
+				userVip:false,
+				userAvatar:"../../static/touxiang495@2x.png",
+				vipTime:'',
+				userChoose: '',
 				mouths: [],
 				rights: [{
 					id: 1,
@@ -203,7 +214,14 @@
 			}
 		},
 		onLoad() {
-			this.getVipList()
+			this.getVipList();
+			console.log(getApp().globalData.userInfo);
+			
+		},
+		onShow(){
+			this.userVip=getApp().globalData.userInfo.vip;
+			this.vipTime = getApp().globalData.userInfo.vipdate;
+			this.userAvatar=getApp().globalData.userInfo.avatarUrl
 		},
 		methods: {
 			showPopup() {
@@ -219,44 +237,49 @@
 					url: '/user/topupList',
 					token
 				})
-				console.log(res);
 				this.mouths = res.data.data;
 				this.choose = {
-					_id: res.data.data[0]._id,
+					_id: '',
 					data: res.data.data[0].mouth
 				}
-				console.log(this.choose);
 			},
 			//开通会员
 			async openVip() {
 				const token = uni.getStorageSync('token');
-				const res = await $request({
-					url: "/user/openVip",
-					token,
-					data:this.choose
-				})
-				console.log(res);
-				if(res.data.code){
+				if (!this.choose._id) {
 					uni.showToast({
-						title:res.data.msg,
+						title: '请选择套餐',
+						icon:"error"
 					})
-					this.closePopup()
+				} else {
+					const res = await $request({
+						url: "/user/openVip",
+						token,
+						data: this.choose
+					})
+					if (res.data.code) {
+						uni.showToast({
+							title: res.data.msg,
+						})
+						this.closePopup()
+					}
 				}
 			},
 			//修改用户选中的开通数据
-			changeChoose(mouths){
+			changeChoose(mouths) {
 				const _id = getApp().globalData.userInfo._id;
-				this.choose={
+				this.choose = {
 					_id,
-					date:mouths+''
+					date: mouths + ''
 				}
-				console.log(this.choose);
 			},
-			changeUserChoose(_id){
-				this.userChoose=_id;
+			changeUserChoose(_id) {
+				this.userChoose = _id;
 			},
 			back(e) {
-				uni.navigateBack({delta: 1})
+				uni.navigateBack({
+					delta: 1
+				})
 			},
 
 		}
@@ -280,10 +303,11 @@
 			color: #fff;
 			position: relative;
 		}
-		.title-back{
+
+		.title-back {
 			position: absolute;
 			font-size: 30rpx;
-			left:36rpx;
+			left: 36rpx;
 			top: 118rpx;
 		}
 
@@ -435,8 +459,10 @@
 				color: #fff;
 			}
 		}
-		.userChoose{
-			border: solid 2rpx red;;
+
+		.userChoose {
+			border: solid 2rpx red;
+			;
 		}
 	}
 
@@ -558,8 +584,10 @@
 		.choosed {
 			border: solid 2rpx #dcb66a;
 		}
-		.userChoose{
-			border: solid 2rpx red;;
+
+		.userChoose {
+			border: solid 2rpx red;
+			;
 		}
 
 		.choosed::before {
