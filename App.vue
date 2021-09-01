@@ -24,6 +24,7 @@
                         token,
                     },
                 })
+                // console.log(res.data[0])
                 getApp().globalData.userInfo = res.data[0]
             },
         },

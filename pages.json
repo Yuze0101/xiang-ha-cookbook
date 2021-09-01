@@ -53,15 +53,19 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "text": "首页"
+                "text": "首页",
+                "iconPath":"static/images/@2/wode 3_slices/mengbanzu 41@2x.png"
+                
             },
             {
                 "pagePath": "pages/VIP/index",
-                "text": "VIP会员"
+                "text": "VIP会员",
+                "iconPath":"static/images/@2/wode 3_slices/mengbanzu 40@2x.png"
             },
             {
                 "pagePath": "pages/UserCenter/index",
-                "text": "我的"
+                "text": "我的",
+                "iconPath":"static/images/@2/wode 3_slices/mengbanzu39@2x.png"
             }
         ]
     },
