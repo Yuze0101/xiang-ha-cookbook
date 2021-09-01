@@ -19,8 +19,8 @@
 			<!-- <image src="../../static/images/@2/midouyichu _slices/tupian1@2x.png" mode="" /> -->
 			<view class="alertVIP">
 				<view>开通会员观看时评做法</view>
-				<view class="playerBTN">立即开通</view>
-				<view>已是会员，立即登录></view>
+				<view class="playerBTN" @click="toVIP">立即开通</view>
+				<view @click="toUserCenter">已是会员，立即登录></view>
 			</view>
 		</view>
 		<view class="playerInfo">
@@ -128,6 +128,7 @@
 			this.currentId = options.id
 			const token = uni.getStorageSync("token")
 			const userInfo = getApp().globalData.userInfo
+			console.log("USERINFO",userInfo);
 			if (token) {
 				this.getMenuDetail()
 				this.getGuessLikeList(token)
@@ -201,6 +202,16 @@
 						duration: 2000,
 					})
 				}
+			},
+			toVIP(e) {
+				uni.switchTab({
+					url: "/pages/VIP/index",
+				})
+			},
+			toUserCenter(e) {
+				uni.switchTab({
+					url: "/pages/UserCenter/index",
+				})
 			},
 			back(e) {
 				uni.navigateBack({ delta: 1 })
