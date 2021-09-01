@@ -173,11 +173,11 @@
                     appSecret: 'def0d690e60e8b472857576e735df01d',
                 })
                 const res2 = await this.authDatabase(res.data.token, userInfo)
+				this.getUserInfoFromDatabase(res.data.token)
                 uni.setStorage({
                     key: 'token',
                     data: res.data.token,
                     success() {
-                        this.getUserInfoFromDatabase(res.data.token)
                         uni.reLaunch({
                             url: '/pages/UserCenter/index',
                         })
