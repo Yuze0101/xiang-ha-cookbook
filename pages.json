@@ -54,18 +54,21 @@
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",
-                "iconPath":"static/images/@2/wode 3_slices/mengbanzu 41@2x.png"
+                "iconPath":"static/images/home.png",
+				"selectedIconPath":"static/images/home_o.png"
                 
             },
             {
                 "pagePath": "pages/VIP/index",
                 "text": "VIP会员",
-                "iconPath":"static/images/@2/wode 3_slices/mengbanzu 40@2x.png"
+                "iconPath":"static/images/vip.png",
+                "selectedIconPath":"static/images/vip_o.png"
             },
             {
                 "pagePath": "pages/UserCenter/index",
                 "text": "我的",
-                "iconPath":"static/images/@2/wode 3_slices/mengbanzu39@2x.png"
+                "iconPath":"static/images/my.png",
+                "selectedIconPath":"static/images/my_o.png"
             }
         ]
     },
