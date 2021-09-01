@@ -29,15 +29,17 @@
 			<view class="register">
 				<view class="register-center">
 					<view class="center-left">
-						<image src="../../static/touxiang495@2x.png" mode=""></image>
+						<image :src="userAvatar" mode=""></image>
 					</view>
 					<view class="center-right">
 						<view class="p-top">
-							<text>立即登录</text>
+							<text v-if="!userVip">立即开通</text>
+							<text v-else>立即续费</text>
 							<text class="p-1">会员</text>
 						</view>
 						<view class="p-bottom">
-							<text>开通会员尊享VIP权益</text>
+							<text v-if="!userVip">开通会员尊享VIP权益</text>
+							<text v-else>续费会员尊享VIP权益</text>
 						</view>
 					</view>
 				</view>
@@ -66,14 +68,18 @@
 			<view class="recommend">
 				<text class="p1">恭喜</text>
 				<text class="p2">您获得2折开通会员特权！</text>
-				<view class="button" @click="showPopup">立即开通</view>
+				<view class="button" @click="showPopup" >
+				<text v-if="!userVip">立即开通</text>
+				<text v-else>立即续费</text>
+				</view>
 			</view>
 
 			<!-- 弹出购买框 -->
 			<uni-popup ref="popup" type="bottom">
 				<view class="popup">
 					<view class="p111">
-						<text>开通VIP会员</text>
+						<text v-if="!userVip">开通VIP会员</text>
+						<text v-else>续费VIP会员</text>
 					</view>
 
 					<view class="months">
@@ -179,6 +185,9 @@
 					_id: '',
 					date: '',
 				},
+				userVip:false,
+				userAvatar:"../../static/touxiang495@2x.png",
+				vipTime:'',
 				userChoose: '',
 				mouths: [],
 				rights: [{
@@ -206,7 +215,13 @@
 		},
 		onLoad() {
 			this.getVipList();
-			console.log(getApp().globalData.userInfo)
+			console.log(getApp().globalData.userInfo);
+			
+		},
+		onShow(){
+			this.userVip=getApp().globalData.userInfo.vip;
+			this.vipTime = getApp().globalData.userInfo.vipdate;
+			this.userAvatar=getApp().globalData.userInfo.avatarUrl
 		},
 		methods: {
 			showPopup() {
