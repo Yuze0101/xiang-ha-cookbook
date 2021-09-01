@@ -17,14 +17,14 @@
 		<view class="player">
 			<video :src="meunData.vid"></video>
 			<!-- <image src="../../static/images/@2/midouyichu _slices/tupian1@2x.png" mode="" /> -->
-			<view class="alertVIP">
+			<view class="alertVIP" v-if="userInfo.vip?false:true">
 				<view>开通会员观看时评做法</view>
 				<view class="playerBTN" @click="toVIP">立即开通</view>
 				<view @click="toUserCenter">已是会员，立即登录></view>
 			</view>
 		</view>
 		<view class="playerInfo">
-			<view class="buyVipButton">会员低至2元/月，免广告、看10000+名厨视频</view>
+			<view class="buyVipButton" v-if="userInfo.vip?false:true">会员低至2元/月，免广告、看10000+名厨视频</view>
 			<view class="menuName">{{ meunData.name }}</view>
 			<view class="cardDataBox">
 				<view class="cardItemData">
@@ -121,14 +121,16 @@
 				currentId: "",
 				meunData: {},
 				guessLikeList: [],
+				userInfo: {},
 			}
 		},
 		onLoad(options) {
-			console.log(options);
+			console.log(options)
 			this.currentId = options.id
 			const token = uni.getStorageSync("token")
 			const userInfo = getApp().globalData.userInfo
-			console.log("USERINFO",userInfo);
+			this.userInfo = userInfo
+			console.log("USERINFO", this.userInfo)
 			if (token) {
 				this.getMenuDetail()
 				this.getGuessLikeList(token)
