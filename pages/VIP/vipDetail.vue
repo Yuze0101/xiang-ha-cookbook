@@ -25,7 +25,7 @@
 				</view>
 			</view>
 
-			<!-- 立即登录模块 -->
+			<!-- 立即开通模块 -->
 			<view class="register">
 				<view class="register-center">
 					<view class="center-left">
@@ -49,7 +49,7 @@
 			<view class="months">
 				<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
 					v-for="(item,index) in mouths" :key='item._id'
-					@click="changeChoose(item.mouth);changeUserChoose(item._id)">
+					@click="changeChoose(item.mouth);changeUserChoose(item._id);changeMoney(item.salePrice)">
 
 					<view class="p1">
 						<text>{{item.mouth}}个月</text>
@@ -85,7 +85,7 @@
 					<view class="months">
 						<view :class="['months-item',index==0?'choosed':'',userChoose==item._id?'userChoose':'']"
 							v-for="(item,index) in mouths" :key='item._id'
-							@click="changeChoose(item.mouth);changeUserChoose(item._id)">
+							@click="changeChoose(item.mouth);changeUserChoose(item._id);changeMoney(item.salePrice)">
 
 							<view class="p1">
 								<text>{{item.mouth}}个月</text>
@@ -189,6 +189,7 @@
 				userAvatar:"../../static/touxiang495@2x.png",
 				vipTime:'',
 				userChoose: '',
+				money:0,
 				mouths: [],
 				rights: [{
 					id: 1,
@@ -221,7 +222,7 @@
 		onShow(){
 			this.userVip=getApp().globalData.userInfo.vip;
 			this.vipTime = getApp().globalData.userInfo.vipdate;
-			this.userAvatar=getApp().globalData.userInfo.avatarUrl
+			this.userAvatar=getApp().globalData.userInfo.avatarUrl;
 		},
 		methods: {
 			showPopup() {
@@ -242,6 +243,7 @@
 					_id: '',
 					data: res.data.data[0].mouth
 				}
+				this.money=res.data.data[0].salePrice
 			},
 			//开通会员
 			async openVip() {
@@ -258,10 +260,10 @@
 						data: this.choose
 					})
 					if (res.data.code) {
-						uni.showToast({
-							title: res.data.msg,
+						this.closePopup();
+						uni.navigateTo({
+							url:"/pages/VIP/paySuccess?money="+this.money
 						})
-						this.closePopup()
 					}
 				}
 			},
@@ -275,6 +277,9 @@
 			},
 			changeUserChoose(_id) {
 				this.userChoose = _id;
+			},
+			changeMoney(money){
+			this.money = money
 			},
 			back(e) {
 				uni.navigateBack({
