@@ -8,7 +8,7 @@
 				<text>小白学做菜必备烹饪助手</text>
 			</view>
 			<view class="search">
-				<input class="search-input" type="text" v-model="search" placeholder="共有857142道菜" />
+				<input class="search-input" type="text" v-model="search" @change="toSearch" placeholder="共有857142道菜" />
 				<image src="../../static/mengbanzu2@2x.png" class="search-img" mode=""></image>
 			</view>
 		</view>
@@ -166,6 +166,12 @@
 					url: "/pages/Product/index?id=" + id,
 				})
 			},
+			//跳转搜索页面
+			toSearch(){
+				uni.navigateTo({
+					url:"/pages/index/search?search="+this.search
+				})
+			}
 		},
 	}
 </script>
