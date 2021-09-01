@@ -146,7 +146,6 @@
 			async getRecommends() {
 				const res = await $request({ url: "/home/recommend" })
 				this.foods = res.data.message
-				console.log(this.foods)
 			},
 			//跳转分类页
 			navigateTo(index, name) {

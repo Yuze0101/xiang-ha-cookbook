@@ -205,7 +205,8 @@
 			}
 		},
 		onLoad() {
-			this.getVipList()
+			this.getVipList();
+			console.log(getApp().globalData.userInfo)
 		},
 		methods: {
 			showPopup() {
@@ -226,7 +227,6 @@
 					_id: '',
 					data: res.data.data[0].mouth
 				}
-				console.log(this.choose);
 			},
 			//开通会员
 			async openVip() {
@@ -242,7 +242,6 @@
 						token,
 						data: this.choose
 					})
-					console.log(res);
 					if (res.data.code) {
 						uni.showToast({
 							title: res.data.msg,
@@ -258,7 +257,6 @@
 					_id,
 					date: mouths + ''
 				}
-				console.log(this.choose);
 			},
 			changeUserChoose(_id) {
 				this.userChoose = _id;
