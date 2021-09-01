@@ -165,7 +165,6 @@
                     return
                 }
                 const userInfo = await this.getUserProfile()
-                getApp().globalData.userInfo = userInfo
                 const code = await this.getCode()
                 const res = await this.wxLogin({
                     code,
@@ -177,12 +176,25 @@
                     key: 'token',
                     data: res.data.token,
                     success() {
+						this.getUserInfoFromDatabase(res.data.token)
                         uni.reLaunch({
                             url: '/pages/UserCenter/index',
                         })
                     },
                 })
             },
+			async getUserInfoFromDatabase(token) {
+			    const res = await $request({
+			        url: '/user/getUserInfo',
+			        method: 'GET',
+			        token,
+			        data: {
+			            token,
+			        },
+			    })
+			    // console.log(res.data[0])
+			    getApp().globalData.userInfo = res.data[0]
+			},
             getUserProfile() {
                 return new Promise((resolve, reject) => {
                     wx.getUserProfile({
@@ -231,6 +243,9 @@
                 })
             },
             gotoBuyVip() {
+				if (!this.isLogin) {
+					this.handleLogin();
+				}
                 uni.navigateTo({
                     url: '/pages/VIP/vipDetail',
                 })
