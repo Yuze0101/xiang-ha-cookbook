@@ -178,7 +178,7 @@
                     key: 'token',
                     data: res.data.token,
                     success() {
-                        uni.reLaunch({
+                        uni.switchTab({
                             url: '/pages/UserCenter/index',
                         })
                     },
